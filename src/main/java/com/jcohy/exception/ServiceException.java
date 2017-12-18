@@ -1,9 +1,16 @@
 package com.jcohy.exception;
 
+
+/**
+ * Copyright  : 2015-2033 Beijing Startimes Communication & Network Technology Co.Ltd
+ * Created by jiac on 2017/10/18 10:22.
+ * ClassName  : ServiceException
+ * Description  :
+ */
 public class ServiceException extends RuntimeException{
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 3193263238791280279L;
 
