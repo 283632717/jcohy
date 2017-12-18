@@ -6,26 +6,20 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Jcohy</title>
-	<!-- core CSS -->
+    <!-- core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/animate.min.css" rel="stylesheet">
-    <link href="css/owl.carousel.css" rel="stylesheet">
-    <link href="css/owl.transitions.css" rel="stylesheet">
-    <link href="css/prettyPhoto.css" rel="stylesheet">
+
+
     <link href="css/main.css" rel="stylesheet">
-    <link href="css/responsive.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/iconfont.css">
-	<link href="style.css" rel="stylesheet">
+    <link href="css/prettyPhoto.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/iconfont.css">
+    <link href="style.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
-    <![endif]--> 
-    <link rel="shortcut icon" href="images/ico/logn.PNG"> 
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">     
+    <![endif]-->
 </head><!--/head-->
 
 <body id="home" class="homepage">
@@ -40,7 +34,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.ftl"><img src="images/jcohy.png" alt="logo"></a>
+                    <a class="navbar-brand" href="index.ftl"><img src="images/jcohy.png" alt="logo" style="width: 100px;height: 100px"></a>
                 </div>
 				
                 <div class="collapse navbar-collapse navbar-right">
