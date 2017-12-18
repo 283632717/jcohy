@@ -1,4 +1,4 @@
-package com.jcohy.conf;
+package com.jcohy.intercepter;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
