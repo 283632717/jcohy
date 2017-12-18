@@ -1,6 +1,6 @@
 package com.jcohy;
 
-import com.jcohy.conf.CommonIntercepter;
+import com.jcohy.intercepter.CommonIntercepter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
