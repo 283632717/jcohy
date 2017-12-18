@@ -38,16 +38,16 @@ public class LoginController {
                             String name, String password,
                             @RequestParam(required = false) String keepLogin){
         try {
-            boolean keepLogin1 = false;
+            boolean _keepLogin = false;
             if("true".equalsIgnoreCase(keepLogin)){
-                keepLogin1 = true;
+                _keepLogin = true;
             }else{
-                keepLogin1 = false;
+                _keepLogin = false;
             }
             String ip = IpKit.getRealIp(request);
-            Session session = userService.login(name,password,keepLogin1,ip);
+            Session session = userService.login(name,password,_keepLogin,ip);
             //把sessionID写入cookie
-            CookieKit.setSessionId2Cookie(response, session.getSessionId(), ip, keepLogin1);
+            CookieKit.setSessionId2Cookie(response, session.getSessionId(), ip, _keepLogin);
 
             return JsonResult.ok().set("returnUrl", "/admin");
         } catch (Exception e) {

@@ -21,5 +21,4 @@ public class JcohyApplicationTests {
 		List<User> all = userRepository.findAll();
 		System.out.println(all.size());
 	}
-
 }

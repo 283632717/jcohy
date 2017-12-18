@@ -1,13 +1,4 @@
-﻿<!--
-
- @Name：不落阁后台模板源码
- @Author：Absolutely
- @Site：http://www.lyblogs.cn
-
- -->
-
-
-<form class="layui-form" action="">
+﻿<form class="layui-form" action="">
     <div class="layui-form-item">
         <label class="layui-form-label">账号</label>
         <div class="layui-input-inline pm-login-input">

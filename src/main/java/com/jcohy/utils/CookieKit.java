@@ -70,10 +70,10 @@ public final class CookieKit {
 	}
 
 	/**
-	 * 
+	 *
 	 * cookie设计为: des(私钥).encode(sessionId~time~maxAge~ip)
-	 * 
-	 * @param response 
+	 *
+	 * @param response
 	 * @param sessionId  用户sessionId
 	 * @param remember   是否记住密码、此参数控制cookie的 maxAge，默认为2分钟（只在当前会话）<br>
 	 *                   记住密码默认为1年
@@ -84,7 +84,7 @@ public final class CookieKit {
 		long now = System.currentTimeMillis();
 		// 超时时间，默认时间
 		int maxAge = Constant.COOKIE_DEFAULT_DATE;
-		
+
 		if (remember.length > 0 && remember[0]) {
 			maxAge = Constant.COOKIE_DATE;
 		}
@@ -124,7 +124,7 @@ public final class CookieKit {
 	}
 
 	/**
-	 * 清除 sessionId的cookie 
+	 * 清除 sessionId的cookie
 	 * @param response
 	 * @param
 	 */
@@ -132,7 +132,7 @@ public final class CookieKit {
 		setCookie(response, Constant.USER_COOKIE_KEY, null, 0);
 	}
 	/**
-	 * 清除 某个指定的cookie 
+	 * 清除 某个指定的cookie
 	 * @param response
 	 * @param key
 	 */
