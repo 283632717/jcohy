@@ -2,6 +2,7 @@ package com.jcohy;
 
 import com.jcohy.intercepter.CommonIntercepter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -15,7 +16,9 @@ public class JcohyApplication extends WebMvcConfigurerAdapter{
 	private CommonIntercepter commonInterceptor;
 
 	public static void main(String[] args) {
-		SpringApplication.run(JcohyApplication.class, args);
+		SpringApplication springApplication = new SpringApplication(JcohyApplication.class);
+		//
+		springApplication.run(args);
 	}
 
 	@Override
