@@ -7,12 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * @author SPPan
- * 
- * 公用拦截器
- *
- */
+
 @Component
 public class CommonIntercepter implements HandlerInterceptor {
 

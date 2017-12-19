@@ -17,6 +17,7 @@ public class Session  extends AbstractModel implements Serializable{
 
     private static final long serialVersionUID = 443119757745421828L;
 
+    @Column(name = "session_id")
     private String sessionId;
 
     @OneToOne
