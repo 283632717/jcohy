@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Jcohy后台管理系统</title>
-    <link rel="shortcut icon" href="../images/Logo_40.png" type="image/x-icon">
+    <link rel="shortcut icon" href="${ctx}/images/jcohy.png" type="image/x-icon">
     <!-- layui.css -->
     <link href="${ctx!}/js/plugins/layui/css/layui.css" rel="stylesheet" />
     <!-- font-awesome.css -->
@@ -229,7 +229,7 @@
         </div>
     </div>
     <!-- layui.js -->
-    <script src="../plugin/layui/layui.js"></script>
+    <script src="${ctx!}/js/plugin/layui/layui.js"></script>
     <!-- layui规范化用法 -->
     <script type="text/javascript">
         layui.config({
