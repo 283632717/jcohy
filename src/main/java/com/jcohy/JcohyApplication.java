@@ -1,6 +1,7 @@
 package com.jcohy;
 
 import com.jcohy.intercepter.CommonIntercepter;
+import com.jcohy.intercepter.LoginIntercepter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
@@ -14,7 +15,8 @@ public class JcohyApplication extends WebMvcConfigurerAdapter{
 
 	@Autowired
 	private CommonIntercepter commonInterceptor;
-
+	@Autowired
+	private LoginIntercepter loginIntercepter;
 	public static void main(String[] args) {
 		SpringApplication springApplication = new SpringApplication(JcohyApplication.class);
 		//
@@ -26,6 +28,8 @@ public class JcohyApplication extends WebMvcConfigurerAdapter{
 		super.addInterceptors(registry);
 		registry.addInterceptor(commonInterceptor)
 				.addPathPatterns("/**");
+		registry.addInterceptor(loginIntercepter).addPathPatterns("/admin/**")
+				.excludePathPatterns("/admin");
 	}
 
 	@Override

@@ -5,6 +5,8 @@ import com.jcohy.model.Session;
 import com.jcohy.service.UserService;
 import com.jcohy.utils.CookieKit;
 import com.jcohy.utils.IpKit;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class LoginController {
 
+    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
     @Autowired
     private UserService userService;
 
@@ -38,6 +41,7 @@ public class LoginController {
                             String name, String password,
                             @RequestParam(required = false) String keepLogin){
         try {
+            logger.error(name+","+password);
             boolean _keepLogin = false;
             if("true".equalsIgnoreCase(keepLogin)){
                 _keepLogin = true;

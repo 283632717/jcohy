@@ -33,7 +33,7 @@
                     <a href="javascript:;" id="individuation"><i class="fa fa-tasks fa-fw" style="padding-right:5px;"></i>个性化</a>
                 </li>
                 <li class="ht-nav-item">
-                    <a href="javascript:;"><i class="fa fa-power-off fa-fw"></i>注销</a>
+                    <a href="loginout()"><i class="fa fa-power-off fa-fw"></i>注销</a>
                 </li>
             </ul>
         </div>
@@ -229,11 +229,11 @@
         </div>
     </div>
     <!-- layui.js -->
-    <script src="${ctx!}/js/plugin/layui/layui.js"></script>
+    <script src="${ctx!}/js/plugins/layui/layui.js"></script>
     <!-- layui规范化用法 -->
     <script type="text/javascript">
         layui.config({
-            base: '../js/'
+            base: '${ctx!}/js/jcohy/'
         }).use('main');
     </script>
 </body>

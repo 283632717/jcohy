@@ -2,6 +2,7 @@ package com.jcohy;
 
 import com.jcohy.model.User;
 import com.jcohy.repository.UserRepository;
+import com.jcohy.utils.MD5Kit;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,8 @@ public class JcohyApplicationTests {
 	private UserRepository userRepository;
 	@Test
 	public void contextLoads() {
-		List<User> all = userRepository.findAll();
-		System.out.println(all.size());
+//		List<User> all = userRepository.findAll();
+		String passwordMD5 = MD5Kit.generatePasswordMD5("111111", "jcohy");
+		System.out.println(passwordMD5);
 	}
 }
