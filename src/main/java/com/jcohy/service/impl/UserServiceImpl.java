@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService{
         }
         String passwordMD5 = MD5Kit.generatePasswordMD5(password, user.getSalt());
         if(passwordMD5 != null && passwordMD5.equalsIgnoreCase(user.getPassword())){
-            // 如果用户勾选保持登录，暂定过期时间为 1 年，否则为 30 分钟，单位为秒
+            // 如果用户勾选保持登录，暂定过期时间为 Constant.SESSION_KEEPLOGIN，否则为 Constant.SESSION_UNKEEPLOGIN 分钟，单位为秒
             long liveSeconds =  keepLogin!= null && keepLogin ? Constant.SESSION_KEEPLOGIN :Constant.SESSION_UNKEEPLOGIN;
             // expireAt 用于设置 session 的过期时间点，需要转换成毫秒
             long expireAt = System.currentTimeMillis() + (liveSeconds * 1000);

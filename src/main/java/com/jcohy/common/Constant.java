@@ -23,7 +23,7 @@ public interface Constant {
 	/**
 	 * cookie_key
 	 */
-	public static final String USER_COOKIE_KEY    = "AppStoreUserId";
+	public static final String USER_COOKIE_KEY    = "JcohyUserId";
 
 	/**
 	 * cookie_secret私钥

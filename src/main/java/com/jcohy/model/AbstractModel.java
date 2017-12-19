@@ -24,13 +24,10 @@ public abstract class AbstractModel implements Serializable {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date")
-    @JsonFormat(pattern = Constant.DATETIME_FORMAT, timezone = "GMT+8")
     private Date createData;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "update_date")
-    @JsonFormat(pattern = Constant.DATETIME_FORMAT, timezone = "GMT+8")
-
     private Date updateData;
 
     public Long getId() {
