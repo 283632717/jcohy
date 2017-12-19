@@ -4,7 +4,7 @@
     //自定义验证
     form.verify({
         passWord: [/^[\S]{6,12}$/, '密码必须6到12位'],
-        account: function (value) {
+        name: function (value) {
             if (value.length <= 0 || value.length > 10) {
                 return "账号必须1到10位"
             }
@@ -27,7 +27,7 @@
         $.ajax({
             type: "POST",
             dataType: "json",
-            url: "${ctx!}/login",
+            url: "/login",
             data: data.field,
             success: function(ret){
                 console.log(ret);
@@ -61,7 +61,7 @@
     $('body').keydown(function (e) {
         if (e.keyCode == 13) {  //Enter键
             if ($('#layer-login').length <= 0) {
-                login();
+                layer.open()
             } else {
                 $('button[lay-filter=login]').click();
             }
@@ -77,7 +77,7 @@
         loginHtml += '<div class="layui-form-item">';
         loginHtml += '<label class="layui-form-label">账号</label>';
         loginHtml += '<div class="layui-input-inline pm-login-input">';
-        loginHtml += '<input type="text" name="account" lay-verify="account" placeholder="请输入账号" value="jcohy" autocomplete="off" class="layui-input">';
+        loginHtml += '<input type="text" name="name" lay-verify="name" placeholder="请输入账号" value="jcohy" autocomplete="off" class="layui-input">';
         loginHtml += '</div>';
         loginHtml += '</div>';
         loginHtml += '<div class="layui-form-item">';

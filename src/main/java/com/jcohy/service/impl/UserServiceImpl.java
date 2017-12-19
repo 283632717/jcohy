@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService{
         if(StringUtils.isBlank(name) || StringUtils.isBlank(password)){
             throw new ServiceException("用户名或者密码不能为空");
         }
-        User user = userRepository.findByUserName(name);
+        User user = userRepository.findByName(name);
         if(user == null){
             throw new ServiceException("用户不存在");
         }
@@ -100,7 +100,7 @@ public class UserServiceImpl implements UserService{
         if(StringUtils.isBlank(name)){
             throw new ServiceException("用户名不能为空");
         }
-        return  userRepository.findByUserName(name);
+        return  userRepository.findByName(name);
     }
 
     @Override
