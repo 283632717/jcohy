@@ -43,20 +43,6 @@
                 }
             }
         });
-        // var index = layer.load(1);
-        // setTimeout(function () {
-        //     //模拟登陆
-        //     layer.close(index);
-        //     if (data.field.account != 'jcohy' || data.field.password != '111111') {
-        //         layer.msg('账号或者密码错误', { icon: 5 });
-        //     } else {
-        //         layer.msg('登陆成功，正在跳转......', { icon: 6 });
-        //         layer.closeAll('page');
-        //         setTimeout(function () {
-        //             window.location.href="/admin/index";
-        //         }, 1000);
-        //     }
-        // }, 400);
         return false;
     });
     //检测键盘按下

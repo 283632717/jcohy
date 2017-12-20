@@ -10,10 +10,12 @@
         e.stopPropagation();    //阻止事件冒泡
         $('div.short-menu').slideToggle('fast');
     });
+
     $('div.short-menu').click(function (e) {
         e.stopPropagation();    //阻止事件冒泡
     });
     $(document).click(function () {
+        //隐藏
         $('div.short-menu').slideUp('fast');
         $('.individuation').removeClass('bounceInRight').addClass('flipOutY');
     });
@@ -24,7 +26,7 @@
     });
     $('.individuation').click(function (e) {
         e.stopPropagation();    //阻止事件冒泡
-    })
+    });
     $('.layui-body').click(function () {
         $('.individuation').removeClass('bounceInRight').addClass('flipOutY');
     });
@@ -147,65 +149,65 @@
     }
 
 
-    runSteward();
+
     //管家功能
-    function runSteward() {
-        var layerSteward;   //管家窗口
-        var isStop = false; //是否停止提醒 
-
-        getNotReplyLeaveMessage();
-
-        var interval = setInterval(function () {
-            getNotReplyLeaveMessage();
-        }, 60000);  //1分钟提醒一次
-
-        function getNotReplyLeaveMessage() {
-            clearInterval(interval); //停止计时器
-            var content = '<p>目前有<span>12</span>条留言未回复<a href="javascript:layer.msg(\'跳转到相应页面\')">点击查看</a></p>';
-            content += '<div class="notnotice" >不再提醒</div>';
-            layerSteward = layer.open({
-                type: 1,
-                title: '管家提醒',
-                shade: 0,
-                resize: false,
-                area: ['340px', '215px'],
-                time: 10000, //10秒后自动关闭
-                skin: 'steward',
-                closeBtn: 1,
-                anim: 2,
-                content: content,
-                end: function () {
-                    if (!isStop) {
-                        interval = setInterval(function () {
-                            if (!isStop) {
-                                clearInterval(interval);
-                                getNotReplyLeaveMessage();
-                            }
-                        }, 60000);
-                    }
-                }
-            });
-            $('.steward').click(function (e) {
-                event.stopPropagation();    //阻止事件冒泡
-            });
-            $('.notnotice').click(function () {
-                isStop = true;
-                layer.close(layerSteward);
-                $('input[lay-filter=steward]').siblings('.layui-form-switch').removeClass('layui-form-onswitch');
-                $('input[lay-filter=steward]').prop("checked", false);
-            });
-            form.on('switch(steward)', function (data) {
-                if (data.elem.checked) {
-                    isStop = false;
-                    clearInterval(interval);
-                    runSteward();
-                } else {
-                    isStop = true;
-                    layer.close(layerSteward);
-                }
-            })
-        }
-    }
+    // function runSteward() {
+    //     var layerSteward;   //管家窗口
+    //     var isStop = false; //是否停止提醒
+    //
+    //     getNotReplyLeaveMessage();
+    //
+    //     var interval = setInterval(function () {
+    //         getNotReplyLeaveMessage();
+    //     }, 60000);  //1分钟提醒一次
+    //
+    //     function getNotReplyLeaveMessage() {
+    //         clearInterval(interval); //停止计时器
+    //         var content = '<p>目前有<span>12</span>条留言未回复<a href="javascript:layer.msg(\'跳转到相应页面\')">点击查看</a></p>';
+    //         content += '<div class="notnotice" >不再提醒</div>';
+    //         layerSteward = layer.open({
+    //             type: 1,
+    //             title: '管家提醒',
+    //             shade: 0,
+    //             resize: false,
+    //             area: ['340px', '215px'],
+    //             time: 10000, //10秒后自动关闭
+    //             skin: 'steward',
+    //             closeBtn: 1,
+    //             anim: 2,
+    //             content: content,
+    //             end: function () {
+    //                 if (!isStop) {
+    //                     interval = setInterval(function () {
+    //                         if (!isStop) {
+    //                             clearInterval(interval);
+    //                             getNotReplyLeaveMessage();
+    //                         }
+    //                     }, 60000);
+    //                 }
+    //             }
+    //         });
+    //         $('.steward').click(function (e) {
+    //             event.stopPropagation();    //阻止事件冒泡
+    //         });
+    //         $('.notnotice').click(function () {
+    //             isStop = true;
+    //             layer.close(layerSteward);
+    //             $('input[lay-filter=steward]').siblings('.layui-form-switch').removeClass('layui-form-onswitch');
+    //             $('input[lay-filter=steward]').prop("checked", false);
+    //         });
+    //         form.on('switch(steward)', function (data) {
+    //             if (data.elem.checked) {
+    //                 isStop = false;
+    //                 clearInterval(interval);
+    //                 runSteward();
+    //             } else {
+    //                 isStop = true;
+    //                 layer.close(layerSteward);
+    //             }
+    //         })
+    //     }
+    // }
 
     exports('main', {});
 });

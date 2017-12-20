@@ -35,6 +35,15 @@ public class LoginController {
         return "admin/index";
     }
 
+    /**
+     * 登录处理
+     * @param request
+     * @param response
+     * @param name
+     * @param password
+     * @param keepLogin
+     * @return
+     */
     @PostMapping("/login")
     @ResponseBody
     public JsonResult login(HttpServletRequest request, HttpServletResponse response,
@@ -57,5 +66,20 @@ public class LoginController {
         } catch (Exception e) {
             return JsonResult.fail(e.getMessage());
         }
+    }
+
+
+    /**
+     * 注销用户
+     * @param request
+     * @param response
+     * @return
+     */
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response){
+        String sessionId = CookieKit.getSessionIdFromCookie(request, response);
+        userService.logout(sessionId);
+        CookieKit.removeSessionIdFromCookie(response);
+        return "redirect:/admin";
     }
 }

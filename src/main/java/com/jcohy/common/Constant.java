@@ -32,19 +32,19 @@ public interface Constant {
 
 
 	/**
-	 * cookie的默认时间设置(120分钟)
+	 * cookie的默认时间设置
 	 */
 	public static final Integer COOKIE_DEFAULT_DATE = 60*60*2;
 	/**
-	 * cookie的时间设置(3个月)
+	 * cookie的时间设置
 	 */
 	public static final Integer COOKIE_DATE = 60*60*24*365;
 	/**
-	 * session登录时间设置(2小时)
+	 * session登录时间设置
 	 */
 	public static final Integer SESSION_KEEPLOGIN = 60*60*2;
 	/**
-	 * session未保存登录状态登录时间设置(30分钟)
+	 * session未保存登录状态登录时间设置
 	 */
 	public static final Integer SESSION_UNKEEPLOGIN = 60;
 }
