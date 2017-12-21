@@ -13,7 +13,7 @@
 <body>
     <div class="mask"></div>
     <div class="main">
-        <h1><span style="font-size: 84px;">B</span><span style="font-size:30px;">log</span></h1>
+        <h1><span style="font-size: 84px;">J</span><span style="font-size:30px;">cohy</span></h1>
         <p id="time"></p>
         <div class="enter">
             Please&nbsp;&nbsp;Click&nbsp;&nbsp;Enter
