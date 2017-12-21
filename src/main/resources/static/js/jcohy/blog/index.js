@@ -127,5 +127,5 @@
     };
 
 
-    exports('datalist', datalist);
+    exports('index', datalist);
 });

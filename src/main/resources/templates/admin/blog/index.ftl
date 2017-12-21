@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <title>数据列表页面</title>
     <!-- layui.css -->
-    <link href="../plugin/layui/css/layui.css" rel="stylesheet" />
+    <link href="${ctx!}/js/plugins/layui/css/layui.css" rel="stylesheet" />
     <style>
         .layui-btn-small {
             padding: 0 15px;
@@ -59,13 +59,14 @@
 </head>
 <body>
     <fieldset id="dataConsole" class="layui-elem-field layui-field-title"  style="display:none;">
-        <legend>控制台</legend>
+        <legend>文章管理</legend>
         <div class="layui-field-box">
             <div id="articleIndexTop">
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item" style="margin:0;margin-top:15px;">
                         <div class="layui-inline">
                             <label class="layui-form-label">分类</label>
+
                             <div class="layui-input-inline">
                                 <select name="city">
                                     <option value="0"></option>
@@ -74,6 +75,7 @@
                                     <option value="3">类别3</option>
                                 </select>
                             </div>
+
                             <label class="layui-form-label">关键词</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="keywords" autocomplete="off" class="layui-input">
@@ -152,12 +154,12 @@
         </div>
     </fieldset>
     <!-- layui.js -->
-    <script src="../plugin/layui/layui.js"></script>
+    <script src="${ctx!}/js/plugins/layui/layui.js"></script>
     <!-- layui规范化用法 -->
     <script type="text/javascript">
         layui.config({
-            base: '../js/'
-        }).use('datalist');
+            base: '${ctx}/js/jcohy/'
+        }).use('blog/index');
     </script>
 </body>
 </html>
