@@ -48,11 +48,13 @@
                         <a href="javascript:;"><i class="fa fa-file-text"></i>内容管理</a>
                         <dl class="layui-nav-child">
                             <dd><a href="javascript:;" data-url="${ctx!}/blog/index" data-id="1">文章管理</a></dd>
-                            <dd><a href="javascript:;" data-url="datalist.html" data-id="2">资源管理</a></dd>
-                            <dd><a href="javascript:;" data-url="datalist.html" data-id="3">时光轴管理</a></dd>
-                            <dd><a href="javascript:;">笔记本管理</a></dd>
-                            <dd><a href="javascript:;" data-url="datalist.html" data-id="4">文章回收站</a></dd>
-                            <dd><a href="javascript:;">资源回收站</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/category/index" data-id="2">资源管理</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/category/index" data-id="2">分类管理</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/category/index" data-id="2">标签管理</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/category/index" data-id="3">时光轴管理</a></dd>
+                            <#--<dd><a href="javascript:;">笔记本管理</a></dd>-->
+                            <#--<dd><a href="javascript:;" data-url="datalist.html" data-id="4">文章回收站</a></dd>-->
+                            <#--<dd><a href="javascript:;">资源回收站</a></dd>-->
                         </dl>
                     </li>
                     <li class="layui-nav-item">
@@ -73,21 +75,21 @@
                             <dd><a href="javascript:;" data-url="datalist.html" data-id="7">留言管理</a></dd>
                         </dl>
                     </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;"><i class="fa fa-cog"></i>系统配置</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="javascript:;">SEO配置</a></dd>
-                            <dd><a href="javascript:;">QQ互联</a></dd>
-                            <dd><a href="javascript:;">数据库配置</a></dd>
-                            <dd><a href="javascript:;">站点地图</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;"><i class="fa fa-info-circle"></i>其他信息</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="javascript:;">操作日志</a></dd>
-                        </dl>
-                    </li>
+                    <#--<li class="layui-nav-item">-->
+                        <#--<a href="javascript:;"><i class="fa fa-cog"></i>系统配置</a>-->
+                        <#--<dl class="layui-nav-child">-->
+                            <#--<dd><a href="javascript:;">SEO配置</a></dd>-->
+                            <#--<dd><a href="javascript:;">QQ互联</a></dd>-->
+                            <#--<dd><a href="javascript:;">数据库配置</a></dd>-->
+                            <#--<dd><a href="javascript:;">站点地图</a></dd>-->
+                        <#--</dl>-->
+                    <#--</li>-->
+                    <#--<li class="layui-nav-item">-->
+                        <#--<a href="javascript:;"><i class="fa fa-info-circle"></i>其他信息</a>-->
+                        <#--<dl class="layui-nav-child">-->
+                            <#--<dd><a href="javascript:;">操作日志</a></dd>-->
+                        <#--</dl>-->
+                    <#--</li>-->
                 </ul>
             </div>
         </div>

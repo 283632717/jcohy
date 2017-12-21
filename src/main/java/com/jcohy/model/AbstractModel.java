@@ -1,8 +1,5 @@
 package com.jcohy.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.jcohy.common.Constant;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -24,11 +21,11 @@ public abstract class AbstractModel implements Serializable {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date")
-    private Date createData;
+    private Date createDate;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "update_date")
-    private Date updateData;
+    private Date updateDate;
 
     public Long getId() {
         return id;
@@ -38,19 +35,19 @@ public abstract class AbstractModel implements Serializable {
         this.id = id;
     }
 
-    public Date getCreateData() {
-        return createData;
+    public Date getCreateDate() {
+        return createDate;
     }
 
-    public void setCreateData(Date createData) {
-        this.createData = createData;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
-    public Date getUpdateData() {
-        return updateData;
+    public Date getUpdateDate() {
+        return updateDate;
     }
 
-    public void setUpdateData(Date updateData) {
-        this.updateData = updateData;
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
     }
 }

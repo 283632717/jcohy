@@ -1,7 +1,7 @@
 ﻿layui.define(['laypage', 'layer', 'form', 'pagesize'], function (exports) {
     var $ = layui.jquery,
         layer = layui.layer,
-        form = layui.form(),
+        form = layui.form,
         laypage = layui.laypage;
     var laypageId = 'pageNav';
 
@@ -127,5 +127,5 @@
     };
 
 
-    exports('index', datalist);
+    exports('blog/index', datalist);
 });
