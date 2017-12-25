@@ -1,8 +1,8 @@
-layui.define(['laypage', 'layer', 'form', 'table'], function (exports) {
+layui.define(['laypage', 'layer',  'table','common'], function (exports) {
     var $ = layui.jquery,
         layer = layui.layer,
-        form = layui.form,
         laypage = layui.laypage,
+        common = layui.common,
         table  = layui.table ;
     table.render({
         elem: '#test'
@@ -17,21 +17,23 @@ layui.define(['laypage', 'layer', 'form', 'table'], function (exports) {
             ,{field: 'count', align:'center', title: '数量',sort: true,unresize:true}
             ,{field: 'status', align:'center', title: '状态',unresize:true}
             ,{field: 'createDate', title: '创建日期',unresize:true}
-            ,{fixed: 'right', width:200, align:'center', toolbar: '#barDemo',unresize:true}
+            ,{fixed: 'right',  align:'center', toolbar: '#operator',unresize:true}
         ]]
     });
     //监听工具条
-    table.on('tool(demo)', function(obj){
+    table.on('tool(table)', function(obj){
         var data = obj.data;
         if(obj.event === 'detail'){
-            layer.msg('ID：'+ data.id + ' 的查看操作');
+            common.frame_show('分类添加','/category/form?id='+data.id);
+            // layer.msg('ID：'+ data.id + ' 的查看操作');
         } else if(obj.event === 'del'){
             layer.confirm('真的删除行么', function(index){
                 obj.del();
                 layer.close(index);
             });
         } else if(obj.event === 'edit'){
-            layer.alert('编辑行：<br>'+ JSON.stringify(data))
+            common.frame_show('分类添加','/category/form?id='+data.id);
+            // layer.alert('编辑行：<br>'+ JSON.stringify(data))
         }
     });
     //分页
@@ -51,7 +53,8 @@ layui.define(['laypage', 'layer', 'form', 'table'], function (exports) {
         var index = layer.load(1);
         setTimeout(function () {
             layer.close(index);
-            layer.msg('打开添加窗口');
+            common.frame_show('分类添加','/category/form');
+            // layer.msg('打开添加窗口');
         }, 500);
     });
 
@@ -70,6 +73,7 @@ layui.define(['laypage', 'layer', 'form', 'table'], function (exports) {
             layer.msg('编辑Id为【' + id + '】的数据');
         }
     };
+
 
 
     exports('category/index', datalist);

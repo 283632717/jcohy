@@ -1,58 +1,24 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
     <meta charset="utf-8" />
     <title>数据列表页面</title>
     <!-- layui.css -->
     <link href="${ctx!}/js/plugins/layui/css/layui.css" rel="stylesheet" />
     <style>
-        .layui-btn-small {
-            padding: 0 15px;
-        }
-
-        .layui-form-checkbox {
-            margin: 0;
-        }
 
         tr td:not(:nth-child(0)),
         tr th:not(:nth-child(0)) {
             text-align: center;
         }
 
-        #dataConsole {
-            text-align: center;
-        }
-        /*分页页容量样式*/
-        /*可选*/
-        .layui-laypage {
-            display: block;
-        }
-
         /*可选*/
         .layui-laypage > * {
             float: left;
         }
-        /*可选*/
-        .layui-laypage .laypage-extend-pagesize {
-            float: right;
-        }
-        /*可选*/
-        .layui-laypage:after {
-            content: ".";
-            display: block;
-            height: 0;
-            clear: both;
-            visibility: hidden;
-        }
-
-        /*必须*/
-        .layui-laypage .laypage-extend-pagesize {
-            height: 30px;
-            line-height: 30px;
-            margin: 0px;
-            border: none;
-            font-weight: 400;
+        .layui-field-title .layui-field-box{
+            padding: 10px 20px 10px 30px;
         }
         .layui-table-cell{
             padding-top: 4px;
@@ -66,20 +32,26 @@
 <fieldset id="dataList" class="layui-elem-field layui-field-title sys-list-field">
     <legend style="text-align:center;">分类列表</legend>
 
+    <div style="padding: 40px 0px 0px 80px;">
+        <div class="layui-inline">
+            <div class="layui-input-inline" style="width:auto">
+                <a id="addCategory" class="layui-btn layui-btn-normal">添加分类</a>
+            </div>
+        </div>
 
-    <div class="layui-inline" style="padding-top: 80px;padding-left: 4%">
-        <button class="layui-btn" onclick="checkAll()">添加分类</button>
+        <div class="layui-inline">
+            <div class="layui-input-inline" style="width:auto">
+                <a id="deleteAll" class="layui-btn layui-btn-normal">批量删除</a>
+            </div>
+        </div>
     </div>
 
-    <div class="layui-inline" style="padding-top: 80px;padding-left: 2%">
-        <button class="layui-btn" onclick="deleteAll()">批量删除</button>
-    </div>
 
     <div class="layui-field-box">
         <div id="dataContent" class="">
 
-            <table class="layui-hide" id="test" lay-filter="demo"></table>
-            <script type="text/html" id="barDemo">
+            <table class="layui-hide" id="test" lay-filter="table"></table>
+            <script type="text/html" id="operator">
                 <a class="layui-btn" lay-event="edit">编辑</a>
                 <a class="layui-btn layui-btn-danger " lay-event="del">删除</a>
             </script>
