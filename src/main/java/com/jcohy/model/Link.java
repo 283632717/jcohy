@@ -31,6 +31,16 @@ public class Link extends AbstractModel implements Serializable {
     @Column(nullable = false, columnDefinition = "Integer default 0")
     private Integer status;
 
+    @Column(name = "email")
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getTitle() {
         return title;

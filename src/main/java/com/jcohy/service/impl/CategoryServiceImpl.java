@@ -65,10 +65,6 @@ public class CategoryServiceImpl implements CategoryService {
         }
     }
 
-    @Override
-    public void saveByName(String name) {
-
-    }
 
     @Override
     public void delete(Long id) {

@@ -1,6 +1,6 @@
 package com.jcohy.service;
 
-import com.jcohy.model.Category;
+import com.jcohy.model.Link;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -8,37 +8,37 @@ import java.util.List;
 
 /**
  * Copyright  : 2015-2033 Beijing Startimes Communication & Network Technology Co.Ltd
- * Created by jiac on 2017/12/21 11:00.
- * ClassName  : CategoryService
+ * Created by jiac on 2017/12/26 13:30.
+ * ClassName  : LinkService
  * Description  :
  */
-public interface CategoryService {
-
+public interface LinkService {
     /**
      * 查询所有资源
      * @return
      */
-    List<Category> findAll();
+    List<Link> findAll();
 
     /**
      * 分页查询
      * @param Pageable
      * @return
      */
-    Page<Category> findAll(Pageable Pageable);
+    Page<Link> findAll(Pageable Pageable);
 
     /**
      * 通过Id查找
      * @param id
      * @return
      */
-    Category findById(Long id);
+    Link findById(Long id);
 
     /**
      * 增加，修改
-     * @param category
+     * @param link
      */
-    void saveOrUpdate(Category category);
+    Link saveOrUpdate(Link link);
+
 
 
     /**
