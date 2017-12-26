@@ -6,7 +6,7 @@ layui.define(['laypage', 'layer',  'table','common'], function (exports) {
         table  = layui.table ;
     table.render({
         elem: '#category'
-        ,height: 332
+        ,height: 500
         ,method:'GET'
         ,url: '/category/list' //数据接口
         ,page: true //开启分页
