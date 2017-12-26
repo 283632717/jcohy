@@ -50,7 +50,7 @@
                             <dd><a href="javascript:;" data-url="${ctx!}/blog/index" data-id="1">文章管理</a></dd>
                             <dd><a href="javascript:;" data-url="${ctx!}/category/index" data-id="2">资源管理</a></dd>
                             <dd><a href="javascript:;" data-url="${ctx!}/category/index" data-id="2">分类管理</a></dd>
-                            <dd><a href="javascript:;" data-url="${ctx!}/category/index" data-id="2">标签管理</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/tag/index" data-id="2">标签管理</a></dd>
                             <dd><a href="javascript:;" data-url="${ctx!}/category/index" data-id="3">时光轴管理</a></dd>
                             <#--<dd><a href="javascript:;">笔记本管理</a></dd>-->
                             <#--<dd><a href="javascript:;" data-url="datalist.html" data-id="4">文章回收站</a></dd>-->
