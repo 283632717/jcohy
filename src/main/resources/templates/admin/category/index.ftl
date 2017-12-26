@@ -24,7 +24,7 @@
             padding-top: 4px;
             height: 45px;
         }
-        /*分页页容量样式END*/
+
     </style>
 </head>
 <body>

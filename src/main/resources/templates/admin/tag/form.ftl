@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <title> - 分类信息</title>
+    <title> - 标签信息</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
 
@@ -27,13 +27,13 @@
 </fieldset>
 <form class="layui-form layui-form-pane" action="">
     <div class="layui-form-item">
-            <input type="hidden" name="id"  value="${(category.id)!}" >
+            <input type="hidden" name="id"  value="${(tag.id)!}" >
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">名称</label>
         <div class="layui-input-inline">
-            <input type="text" name="name" lay-verify="name" placeholder="请输入分类名称" value="${(category.name)!}"
+            <input type="text" name="name" lay-verify="name" placeholder="请输入分类名称" value="${(tag.name)!}"
                    autocomplete="off" class="layui-input">
         </div>
     </div>
@@ -49,7 +49,7 @@
 <script type="text/javascript">
     layui.config({
         base: '${ctx}/js/jcohy/'
-    }).use('category/form');
+    }).use('tag/form');
 </script>
 </body>
 

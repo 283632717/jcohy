@@ -18,24 +18,24 @@
             float: left;
         }
         .layui-field-title .layui-field-box{
-            padding: 10px 20px 10px 30px;
+            padding: 10px 0px 10px 30px;
         }
         .layui-table-cell{
             padding-top: 4px;
             height: 45px;
         }
-        /*分页页容量样式END*/
+
     </style>
 </head>
 <body>
 
 <fieldset id="dataList" class="layui-elem-field layui-field-title sys-list-field">
-    <legend style="text-align:center;">分类列表</legend>
+    <legend style="text-align:center;">标签列表</legend>
 
     <div style="padding: 40px 0px 0px 80px;">
         <div class="layui-inline">
             <div class="layui-input-inline" style="width:auto">
-                <a id="addCategory" class="layui-btn layui-btn-normal">添加分类</a>
+                <a id="addTag" class="layui-btn layui-btn-normal">添加标签</a>
             </div>
         </div>
 
@@ -49,8 +49,7 @@
 
     <div class="layui-field-box">
         <div id="dataContent" class="">
-
-            <table class="layui-hide" id="category" lay-filter="table"></table>
+            <table class="layui-hide" id="tag" lay-filter="table"></table>
             <script type="text/html" id="operator">
                 <a class="layui-btn" lay-event="edit">编辑</a>
                 <a class="layui-btn layui-btn-danger " lay-event="del">删除</a>
@@ -65,7 +64,7 @@
 <script type="text/javascript">
     layui.config({
         base: '${ctx}/js/jcohy/'
-    }).use('category/index');
+    }).use('tag/index');
 </script>
 </body>
 </html>
