@@ -5,10 +5,10 @@ layui.define(['laypage', 'layer',  'table','common'], function (exports) {
         common = layui.common,
         table  = layui.table ;
     table.render({
-        elem: '#test'
+        elem: '#category'
         ,height: 332
-        ,method:'POST'
-        ,url: '/category/all' //数据接口
+        ,method:'GET'
+        ,url: '/category/list' //数据接口
         ,page: true //开启分页
         ,cols: [[ //表头
             {type: 'checkbox', align:'center',unresize:true}
@@ -23,17 +23,14 @@ layui.define(['laypage', 'layer',  'table','common'], function (exports) {
     //监听工具条
     table.on('tool(table)', function(obj){
         var data = obj.data;
-        if(obj.event === 'detail'){
-            common.frame_show('分类添加','/category/form?id='+data.id);
-            // layer.msg('ID：'+ data.id + ' 的查看操作');
-        } else if(obj.event === 'del'){
-            layer.confirm('真的删除行么', function(index){
-                obj.del();
-                layer.close(index);
-            });
+        // if(obj.event === 'detail'){
+        //     common.frame_show('分类添加','/category/form','720','430');
+        //     // layer.msg('ID：'+ data.id + ' 的查看操作');
+        // } else
+        if(obj.event === 'del'){
+            del(data.id);
         } else if(obj.event === 'edit'){
-            common.frame_show('分类添加','/category/form?id='+data.id);
-            // layer.alert('编辑行：<br>'+ JSON.stringify(data))
+            common.frame_show('分类编辑','/category/form?id='+data.id,'720','430');
         }
     });
     //分页
@@ -48,14 +45,22 @@ layui.define(['laypage', 'layer',  'table','common'], function (exports) {
             }
         }
     });
+
+
     //添加数据
     $('#addCategory').click(function () {
         var index = layer.load(1);
         setTimeout(function () {
             layer.close(index);
-            common.frame_show('分类添加','/category/form');
+            common.frame_show('分类添加','/category/form','720','430');
             // layer.msg('打开添加窗口');
         }, 500);
+    });
+
+    //批量删除数据
+    $('#deleteAll').click(function () {
+        var index = layer.load(1);
+
     });
 
     //输出接口，主要是两个函数，一个删除一个编辑
@@ -64,16 +69,34 @@ layui.define(['laypage', 'layer',  'table','common'], function (exports) {
             layer.confirm('确定删除？', {
                 btn: ['确定', '取消'] //按钮
             }, function () {
-                layer.msg('删除Id为【' + id + '】的数据');
+                del(id);
             }, function () {
 
             });
         },
         editData: function (id) {
-            layer.msg('编辑Id为【' + id + '】的数据');
+            common.frame_show('分类编辑','/category/form?id='+id,'720','430');
         }
     };
-
+    function del(id) {
+        layer.confirm('真的删除行么', function (index) {
+            $.ajax({
+                type: "DELETE",
+                dataType: "json",
+                url: "/category/" + id + "/del",
+                success: function (ret) {
+                    if (ret.isOk) {
+                        layer.msg("操作成功", {time: 2000}, function () {
+                            layer.close(index);
+                            window.location.href = "/category/index";
+                        });
+                    } else {
+                        layer.msg(ret.msg, {time: 2000});
+                    }
+                }
+            });
+        });
+    }
 
 
     exports('category/index', datalist);

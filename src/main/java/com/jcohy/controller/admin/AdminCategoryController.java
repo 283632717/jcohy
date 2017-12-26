@@ -1,5 +1,6 @@
 package com.jcohy.controller.admin;
 
+import com.jcohy.common.JsonResult;
 import com.jcohy.common.PageJson;
 import com.jcohy.controller.BaseController;
 import com.jcohy.model.Category;
@@ -27,15 +28,8 @@ public class AdminCategoryController extends BaseController{
     @Autowired
     private CategoryService categoryService;
 
-    @PostMapping("/list")
-    @ResponseBody
-    public Page<Category> list(){
-        PageRequest pageRequest = getPageRequest();
-        Page<Category> categories = categoryService.findAll(pageRequest);
-        return categories;
-    }
 
-    @PostMapping("/all")
+    @GetMapping("/list")
     @ResponseBody
     public PageJson<Category> all(ModelMap map){
         List<Category> categories = categoryService.findAll();
@@ -55,5 +49,29 @@ public class AdminCategoryController extends BaseController{
             map.put("category",category);
         }
         return "admin/category/form";
+    }
+
+    @PostMapping("/save")
+    @ResponseBody
+    public JsonResult save(Category category){
+        try {
+            categoryService.saveOrUpdate(category);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return JsonResult.fail(e.getMessage());
+        }
+        return JsonResult.ok();
+    }
+
+    @DeleteMapping("{id}/del")
+    @ResponseBody
+    public JsonResult del(@PathVariable("id") Long id){
+        try {
+            categoryService.delete(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return JsonResult.fail("删除失败");
+        }
+        return JsonResult.ok();
     }
 }

@@ -60,6 +60,7 @@ public class CategoryServiceImpl implements CategoryService {
         }else{
             category.setCreateDate(new Date());
             category.setCount(0);
+            category.setStatus(0);
             categoryRepository.save(category);
         }
     }
