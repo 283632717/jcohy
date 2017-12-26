@@ -33,7 +33,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">名称</label>
         <div class="layui-input-inline">
-            <input type="text" name="name" lay-verify="name" placeholder="请输入链接名称" value="${(link.title)!}"
+            <input type="text" name="title" lay-verify="name" placeholder="请输入链接名称" value="${(link.title)!}"
                    autocomplete="off" class="layui-input">
         </div>
     </div>
@@ -41,7 +41,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">地址</label>
         <div class="layui-input-inline">
-            <input type="text" name="url" lay-verify="url" placeholder="请输入链接地址" value="${(link.url)!}"
+            <input type="text" name="url"  placeholder="请输入链接地址" value="${(link.url)!}"
                    autocomplete="off" class="layui-input">
         </div>
     </div>
@@ -61,15 +61,6 @@
                    autocomplete="off" class="layui-input">
         </div>
     </div>
-
-
-    <div class="layui-form-item">
-        <label class="layui-form-label">地址</label>
-        <div class="layui-input-inline">
-            <input type="checkbox" name="zzz" lay-skin="switch" lay-text="显示|隐藏">
-        </div>
-    </div>
-
 
     <div class="layui-form-item">
         <button class="layui-btn" lay-submit lay-filter="add">立即提交</button>

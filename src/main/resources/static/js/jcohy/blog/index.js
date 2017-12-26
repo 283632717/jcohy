@@ -1,4 +1,4 @@
-﻿layui.define(['laypage', 'layer', 'form', 'pagesize'], function (exports) {
+﻿﻿layui.define(['laypage', 'layer', 'form', 'pagesize'], function (exports) {
     var $ = layui.jquery,
         layer = layui.layer,
         form = layui.form,

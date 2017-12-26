@@ -5,17 +5,19 @@ layui.define(['laypage', 'layer',  'table','common'], function (exports) {
         common = layui.common,
         table  = layui.table ;
     table.render({
-        elem: '#category'
+        elem: '#link'
         ,height: 500
         ,method:'GET'
-        ,url: '/category/list' //数据接口
+        ,url: '/link/list' //数据接口
         ,page: true //开启分页
         ,cols: [[ //表头
             {type: 'checkbox', align:'center',unresize:true}
             ,{field: 'id', align:'center', title: 'ID', sort: true,unresize:true}
-            ,{field: 'name', align:'center', title: '名称',unresize:true}
-            ,{field: 'count', align:'center', title: '数量',sort: true,unresize:true}
-            ,{field: 'status', align:'center', title: '状态',unresize:true}
+            ,{field: 'title', align:'center', title: '名称',unresize:true}
+            ,{field: 'url', align:'center', title: '地址',sort: true,unresize:true}
+            ,{field: 'email', align:'center', title: '站长邮箱',unresize:true}
+            ,{field: 'description', align:'center', title: '描述',unresize:true}
+            ,{field:'status', title: '状态', templet: '#titleTpl'}
             ,{field: 'createDate', title: '创建日期',unresize:true}
             ,{fixed: 'right',  align:'center', toolbar: '#operator',unresize:true}
         ]]
@@ -24,13 +26,13 @@ layui.define(['laypage', 'layer',  'table','common'], function (exports) {
     table.on('tool(table)', function(obj){
         var data = obj.data;
         // if(obj.event === 'detail'){
-        //     common.frame_show('分类添加','/category/form','720','430');
+        //     common.frame_show('分类添加','/link/form');
         //     // layer.msg('ID：'+ data.id + ' 的查看操作');
         // } else
         if(obj.event === 'del'){
             del(data.id);
         } else if(obj.event === 'edit'){
-            common.frame_show('分类编辑','/category/form?id='+data.id,'720','430');
+            common.frame_show('分类编辑','/link/form?id='+data.id);
         }
     });
     //分页
@@ -48,11 +50,11 @@ layui.define(['laypage', 'layer',  'table','common'], function (exports) {
 
 
     //添加数据
-    $('#addCategory').click(function () {
+    $('#addLink').click(function () {
         var index = layer.load(1);
         setTimeout(function () {
             layer.close(index);
-            common.frame_show('分类添加','/category/form','720','430');
+            common.frame_show('分类添加','/link/form');
             // layer.msg('打开添加窗口');
         }, 500);
     });
@@ -75,7 +77,7 @@ layui.define(['laypage', 'layer',  'table','common'], function (exports) {
             });
         },
         editData: function (id) {
-            common.frame_show('分类编辑','/category/form?id='+id,'720','430');
+            common.frame_show('分类编辑','/link/form?id='+id);
         }
     };
     function del(id) {
@@ -83,12 +85,12 @@ layui.define(['laypage', 'layer',  'table','common'], function (exports) {
             $.ajax({
                 type: "DELETE",
                 dataType: "json",
-                url: "/category/" + id + "/del",
+                url: "/link/" + id + "/del",
                 success: function (ret) {
                     if (ret.isOk) {
                         layer.msg("操作成功", {time: 2000}, function () {
                             layer.close(index);
-                            window.location.href = "/category/index";
+                            window.location.href = "/link/index";
                         });
                     } else {
                         layer.msg(ret.msg, {time: 2000});
@@ -97,7 +99,5 @@ layui.define(['laypage', 'layer',  'table','common'], function (exports) {
             });
         });
     }
-
-
-    exports('category/index', datalist);
+    exports('link/index', datalist);
 });

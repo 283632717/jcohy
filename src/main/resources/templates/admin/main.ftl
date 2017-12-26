@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -67,7 +67,7 @@
                     <li class="layui-nav-item">
                         <a href="javascript:;"><i class="fa fa-wrench"></i>扩展管理</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;">友情链接</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/link/index" data-id="8">友情链接</a></dd>
                             <dd><a href="javascript:;">博主信息</a></dd>
                             <dd><a href="javascript:;">网站信息</a></dd>
                             <dd><a href="javascript:;" data-url="datalist.html" data-id="5">网站公告</a></dd>
@@ -99,7 +99,7 @@
         </div>
         <!--主体内容-->
         <div class="layui-body">
-            <div style="margin:0;position:absolute;top:4px;bottom:0px;width:100%;" class="layui-tab layui-tab-brief" lay-filter="tab" lay-allowclose="true">
+            <div style="margin:0;position:absolute;top:15px;bottom:0px;width:100%;" class="layui-tab layui-tab-brief" lay-filter="tab" lay-allowclose="true">
                 <ul class="layui-tab-title">
                     <li lay-id="0" class="layui-this">首页</li>
                 </ul>

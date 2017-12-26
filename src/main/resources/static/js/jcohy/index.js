@@ -99,7 +99,7 @@
             skin: 'pm-layer-login',
             content: loginHtml
         });
-        layui.form().render('checkbox');
+        layui.form.render('checkbox');
     }
 
     exports('index', {});
