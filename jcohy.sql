@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50637
 File Encoding         : 65001
 
-Date: 2017-12-21 17:50:43
+Date: 2017-12-27 17:15:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -21,18 +21,18 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `blog`;
 CREATE TABLE `blog` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `create_date` timestamp NULL DEFAULT NULL,
-  `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `title` varchar(255) DEFAULT NULL,
   `content` longtext,
   `featured` int(11) DEFAULT NULL,
   `privacy` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `summary` varchar(500) DEFAULT NULL,
   `tags` varchar(255) DEFAULT NULL,
-  `title` varchar(255) DEFAULT NULL,
   `views` int(11) NOT NULL DEFAULT '0',
   `author_id` bigint(20) DEFAULT NULL,
   `category_id` bigint(20) DEFAULT NULL,
+  `create_date` timestamp NULL DEFAULT NULL,
+  `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `FKkrg0cqj6o7b7lvqkn1gjuwjuo` (`author_id`),
   KEY `FKqyvjif1i2geaeuvkh3n1jrnn4` (`category_id`),
@@ -61,9 +61,9 @@ CREATE TABLE `category` (
 -- ----------------------------
 -- Records of category
 -- ----------------------------
-INSERT INTO `category` VALUES ('1', '2017-12-21 13:28:35', '2017-12-21 13:28:38', '0', '原创', '0');
-INSERT INTO `category` VALUES ('2', '2017-12-21 13:28:40', '2017-12-21 13:28:43', '0', '转载', '0');
-INSERT INTO `category` VALUES ('3', '2017-12-21 13:28:45', '2017-12-21 13:28:48', '0', '其他', '0');
+INSERT INTO `category` VALUES ('1', '2017-12-21 13:28:35', '2017-12-26 09:03:09', '0', '转载', '0');
+INSERT INTO `category` VALUES ('2', '2017-12-21 13:28:40', '2017-12-26 09:15:46', '0', '原创', '0');
+INSERT INTO `category` VALUES ('3', '2017-12-26 09:19:49', '2017-12-26 09:19:49', '0', '其他', '0');
 
 -- ----------------------------
 -- Table structure for link
@@ -71,18 +71,21 @@ INSERT INTO `category` VALUES ('3', '2017-12-21 13:28:45', '2017-12-21 13:28:48'
 DROP TABLE IF EXISTS `link`;
 CREATE TABLE `link` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `description` varchar(255) DEFAULT NULL,
-  `status` int(11) NOT NULL DEFAULT '0',
   `title` varchar(255) DEFAULT NULL,
   `url` varchar(500) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL COMMENT '站长邮箱',
+  `description` varchar(255) DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT '0',
   `create_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of link
 -- ----------------------------
+INSERT INTO `link` VALUES ('1', '百度', 'http://www.baidu.com', 'hhh@qq.com', '百度首页', '0', '2017-12-27 09:19:24', '2017-12-27 13:06:51');
+INSERT INTO `link` VALUES ('2', 'layui', 'http://www.layui.com/', 'xian@qq.com', '经典模块化前端UI框架', '0', '2017-12-27 09:56:37', '2017-12-27 10:33:28');
 
 -- ----------------------------
 -- Table structure for login_log
@@ -98,7 +101,7 @@ CREATE TABLE `login_log` (
   PRIMARY KEY (`id`),
   KEY `FKa9ca70emkdxbpw4u0voihgers` (`user_id`),
   CONSTRAINT `FKa9ca70emkdxbpw4u0voihgers` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=159 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of login_log
@@ -208,6 +211,59 @@ INSERT INTO `login_log` VALUES ('102', '0:0:0:0:0:0:0:1', '2017-12-21 17:39:16',
 INSERT INTO `login_log` VALUES ('103', '0:0:0:0:0:0:0:1', '2017-12-21 17:40:47', '1', null, null);
 INSERT INTO `login_log` VALUES ('104', '0:0:0:0:0:0:0:1', '2017-12-21 17:43:17', '1', null, null);
 INSERT INTO `login_log` VALUES ('105', '0:0:0:0:0:0:0:1', '2017-12-21 17:46:18', '1', null, null);
+INSERT INTO `login_log` VALUES ('106', '0:0:0:0:0:0:0:1', '2017-12-21 17:53:34', '1', null, null);
+INSERT INTO `login_log` VALUES ('107', '0:0:0:0:0:0:0:1', '2017-12-22 14:35:12', '1', null, null);
+INSERT INTO `login_log` VALUES ('108', '0:0:0:0:0:0:0:1', '2017-12-25 11:32:16', '1', null, null);
+INSERT INTO `login_log` VALUES ('109', '0:0:0:0:0:0:0:1', '2017-12-25 11:38:59', '1', null, null);
+INSERT INTO `login_log` VALUES ('110', '0:0:0:0:0:0:0:1', '2017-12-25 11:41:24', '1', null, null);
+INSERT INTO `login_log` VALUES ('111', '0:0:0:0:0:0:0:1', '2017-12-25 11:42:40', '1', null, null);
+INSERT INTO `login_log` VALUES ('112', '0:0:0:0:0:0:0:1', '2017-12-25 11:50:06', '1', null, null);
+INSERT INTO `login_log` VALUES ('113', '0:0:0:0:0:0:0:1', '2017-12-25 11:50:44', '1', null, null);
+INSERT INTO `login_log` VALUES ('114', '0:0:0:0:0:0:0:1', '2017-12-25 11:53:37', '1', null, null);
+INSERT INTO `login_log` VALUES ('115', '0:0:0:0:0:0:0:1', '2017-12-25 15:56:14', '1', null, null);
+INSERT INTO `login_log` VALUES ('116', '0:0:0:0:0:0:0:1', '2017-12-25 16:19:11', '1', null, null);
+INSERT INTO `login_log` VALUES ('117', '0:0:0:0:0:0:0:1', '2017-12-25 16:31:11', '1', null, null);
+INSERT INTO `login_log` VALUES ('118', '0:0:0:0:0:0:0:1', '2017-12-25 16:32:45', '1', null, null);
+INSERT INTO `login_log` VALUES ('119', '0:0:0:0:0:0:0:1', '2017-12-25 16:34:37', '1', null, null);
+INSERT INTO `login_log` VALUES ('120', '0:0:0:0:0:0:0:1', '2017-12-25 16:36:20', '1', null, null);
+INSERT INTO `login_log` VALUES ('121', '0:0:0:0:0:0:0:1', '2017-12-25 16:42:11', '1', null, null);
+INSERT INTO `login_log` VALUES ('122', '0:0:0:0:0:0:0:1', '2017-12-25 16:55:48', '1', null, null);
+INSERT INTO `login_log` VALUES ('123', '0:0:0:0:0:0:0:1', '2017-12-25 16:56:56', '1', null, null);
+INSERT INTO `login_log` VALUES ('124', '0:0:0:0:0:0:0:1', '2017-12-25 17:00:04', '1', null, null);
+INSERT INTO `login_log` VALUES ('125', '0:0:0:0:0:0:0:1', '2017-12-25 17:23:17', '1', null, null);
+INSERT INTO `login_log` VALUES ('126', '0:0:0:0:0:0:0:1', '2017-12-26 08:29:48', '1', null, null);
+INSERT INTO `login_log` VALUES ('127', '0:0:0:0:0:0:0:1', '2017-12-26 08:37:29', '1', null, null);
+INSERT INTO `login_log` VALUES ('128', '0:0:0:0:0:0:0:1', '2017-12-26 08:45:54', '1', null, null);
+INSERT INTO `login_log` VALUES ('129', '0:0:0:0:0:0:0:1', '2017-12-26 08:48:49', '1', null, null);
+INSERT INTO `login_log` VALUES ('130', '0:0:0:0:0:0:0:1', '2017-12-26 09:00:12', '1', null, null);
+INSERT INTO `login_log` VALUES ('131', '0:0:0:0:0:0:0:1', '2017-12-26 09:02:40', '1', null, null);
+INSERT INTO `login_log` VALUES ('132', '0:0:0:0:0:0:0:1', '2017-12-26 09:04:25', '1', null, null);
+INSERT INTO `login_log` VALUES ('133', '0:0:0:0:0:0:0:1', '2017-12-26 09:07:22', '1', null, null);
+INSERT INTO `login_log` VALUES ('134', '0:0:0:0:0:0:0:1', '2017-12-26 09:15:19', '1', null, null);
+INSERT INTO `login_log` VALUES ('135', '0:0:0:0:0:0:0:1', '2017-12-26 09:17:05', '1', null, null);
+INSERT INTO `login_log` VALUES ('136', '0:0:0:0:0:0:0:1', '2017-12-26 09:18:37', '1', null, null);
+INSERT INTO `login_log` VALUES ('137', '0:0:0:0:0:0:0:1', '2017-12-26 09:28:20', '1', null, null);
+INSERT INTO `login_log` VALUES ('138', '0:0:0:0:0:0:0:1', '2017-12-26 09:31:12', '1', null, null);
+INSERT INTO `login_log` VALUES ('139', '0:0:0:0:0:0:0:1', '2017-12-26 09:33:00', '1', null, null);
+INSERT INTO `login_log` VALUES ('140', '0:0:0:0:0:0:0:1', '2017-12-26 09:46:42', '1', null, null);
+INSERT INTO `login_log` VALUES ('141', '0:0:0:0:0:0:0:1', '2017-12-26 09:56:43', '1', null, null);
+INSERT INTO `login_log` VALUES ('142', '0:0:0:0:0:0:0:1', '2017-12-26 10:12:05', '1', null, null);
+INSERT INTO `login_log` VALUES ('143', '0:0:0:0:0:0:0:1', '2017-12-26 10:18:32', '1', null, null);
+INSERT INTO `login_log` VALUES ('144', '0:0:0:0:0:0:0:1', '2017-12-26 10:20:51', '1', null, null);
+INSERT INTO `login_log` VALUES ('145', '0:0:0:0:0:0:0:1', '2017-12-26 10:30:38', '1', null, null);
+INSERT INTO `login_log` VALUES ('146', '0:0:0:0:0:0:0:1', '2017-12-27 09:18:44', '1', null, null);
+INSERT INTO `login_log` VALUES ('147', '0:0:0:0:0:0:0:1', '2017-12-27 10:11:37', '1', null, null);
+INSERT INTO `login_log` VALUES ('148', '0:0:0:0:0:0:0:1', '2017-12-27 10:13:23', '1', null, null);
+INSERT INTO `login_log` VALUES ('149', '0:0:0:0:0:0:0:1', '2017-12-27 10:15:26', '1', null, null);
+INSERT INTO `login_log` VALUES ('150', '0:0:0:0:0:0:0:1', '2017-12-27 10:30:49', '1', null, null);
+INSERT INTO `login_log` VALUES ('151', '0:0:0:0:0:0:0:1', '2017-12-27 10:32:09', '1', null, null);
+INSERT INTO `login_log` VALUES ('152', '0:0:0:0:0:0:0:1', '2017-12-27 11:04:45', '1', null, null);
+INSERT INTO `login_log` VALUES ('153', '0:0:0:0:0:0:0:1', '2017-12-27 11:06:06', '1', null, null);
+INSERT INTO `login_log` VALUES ('154', '0:0:0:0:0:0:0:1', '2017-12-27 11:24:54', '1', null, null);
+INSERT INTO `login_log` VALUES ('155', '0:0:0:0:0:0:0:1', '2017-12-27 11:33:33', '1', null, null);
+INSERT INTO `login_log` VALUES ('156', '0:0:0:0:0:0:0:1', '2017-12-27 11:59:22', '1', null, null);
+INSERT INTO `login_log` VALUES ('157', '0:0:0:0:0:0:0:1', '2017-12-27 12:09:55', '1', null, null);
+INSERT INTO `login_log` VALUES ('158', '192.168.21.132', '2017-12-27 15:27:56', '1', null, null);
 
 -- ----------------------------
 -- Table structure for options
@@ -241,7 +297,7 @@ CREATE TABLE `session` (
   PRIMARY KEY (`id`),
   KEY `FK1bi1pmqjgipw7dx3j6bl37dja` (`user_id`),
   CONSTRAINT `FK1bi1pmqjgipw7dx3j6bl37dja` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=159 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of session
@@ -351,6 +407,59 @@ INSERT INTO `session` VALUES ('102', '1513849215460', '7008d40cf1ad46d3a5c41a395
 INSERT INTO `session` VALUES ('103', '1513849307219', '3cf345cd58494443920cbf3fac71fba7', '1', null, null);
 INSERT INTO `session` VALUES ('104', '1513849457288', '634b0da0c02d490e86080298d8fdd9af', '1', null, null);
 INSERT INTO `session` VALUES ('105', '1513849637996', '6b899b17005942eba7ea7a198c41c9a0', '1', null, null);
+INSERT INTO `session` VALUES ('106', '1513850073826', '2e2cf7372fe2499584960be76dd4a13c', '1', null, null);
+INSERT INTO `session` VALUES ('107', '1513924572095', '7e1db9f8dab04eccb14302b38ac0af6f', '1', null, null);
+INSERT INTO `session` VALUES ('108', '1514172796206', '809ae627b14d4f21b89dcae19b404cdc', '1', null, null);
+INSERT INTO `session` VALUES ('109', '1514173199372', '1d5afe5ed04e452e8efd4865d7ef580c', '1', null, null);
+INSERT INTO `session` VALUES ('110', '1514173344327', '4b9ebf44e8734c33b4838926cd05704a', '1', null, null);
+INSERT INTO `session` VALUES ('111', '1514173419760', 'c8b15cfac1aa43a18ee5bb4eca7ca094', '1', null, null);
+INSERT INTO `session` VALUES ('112', '1514173865786', 'c12256d0803044a4b16e9779ec4f8568', '1', null, null);
+INSERT INTO `session` VALUES ('113', '1514173903640', '1ddaf130bde340c69f41b11270b675bc', '1', null, null);
+INSERT INTO `session` VALUES ('114', '1514174077204', '726c153fe0ff44c5a1c717c1ec9d5422', '1', null, null);
+INSERT INTO `session` VALUES ('115', '1514188633623', '39c9293a4b574c5081d65d6028a9db9b', '1', null, null);
+INSERT INTO `session` VALUES ('116', '1514190011365', '8fe3df0c5c304af0b33a5a6b9ff3f943', '1', null, null);
+INSERT INTO `session` VALUES ('117', '1514190730883', '1688135beda94d80831b103bf6ccceb7', '1', null, null);
+INSERT INTO `session` VALUES ('118', '1514190825322', 'ba935fba4d35423999a6f4b34fc8f0dd', '1', null, null);
+INSERT INTO `session` VALUES ('119', '1514190937304', '8e4e8ac9cffe43b790c788ab6d03e1ca', '1', null, null);
+INSERT INTO `session` VALUES ('120', '1514191040335', '01eefb7ad3b641a1a40b3ceab970d8bd', '1', null, null);
+INSERT INTO `session` VALUES ('121', '1514191391068', 'e5166d319864481f8beb50ce255e333e', '1', null, null);
+INSERT INTO `session` VALUES ('122', '1514192207906', 'f80f966d52444affad8e9e4d923272c3', '1', null, null);
+INSERT INTO `session` VALUES ('123', '1514192276182', '615f788a7baa436190cb22619a4d3286', '1', null, null);
+INSERT INTO `session` VALUES ('124', '1514192463680', 'b1c6a71c7e88491780a9d201b9cff672', '1', null, null);
+INSERT INTO `session` VALUES ('125', '1514193856584', '786a7e4022ab4f038f37ca8d81ab51b9', '1', null, null);
+INSERT INTO `session` VALUES ('126', '1514248248175', '5675713d4e2448348dc52a1685acd7c4', '1', null, null);
+INSERT INTO `session` VALUES ('127', '1514248709076', '1c9fb16b18d848d89c1fba54c4c05918', '1', null, null);
+INSERT INTO `session` VALUES ('128', '1514249213915', '0be58e08fec24b3885440da1c3a132e3', '1', null, null);
+INSERT INTO `session` VALUES ('129', '1514249389149', '5526edb3dc104a45856f3bd2515d235b', '1', null, null);
+INSERT INTO `session` VALUES ('130', '1514250071612', '4c682e535e304639aa47a6bf40abb7cd', '1', null, null);
+INSERT INTO `session` VALUES ('131', '1514250220310', '78b26567e44841c4b7436717362e0192', '1', null, null);
+INSERT INTO `session` VALUES ('132', '1514250324704', 'dd3892cb8dd54b1589ec7ec58454b7d4', '1', null, null);
+INSERT INTO `session` VALUES ('133', '1514250501848', 'b157ff0638c24af78b78b7ebc172b4d2', '1', null, null);
+INSERT INTO `session` VALUES ('134', '1514250979211', '893fdbcf9b5d4553b122dbde2fa94a15', '1', null, null);
+INSERT INTO `session` VALUES ('135', '1514251085286', '8c109d02752547d48db28c9313d05812', '1', null, null);
+INSERT INTO `session` VALUES ('136', '1514251176636', '715e0c05cd9a4918940e38b19a9eda36', '1', null, null);
+INSERT INTO `session` VALUES ('137', '1514251760041', 'a54ac4787bf0461c838e98655122ec06', '1', null, null);
+INSERT INTO `session` VALUES ('138', '1514251932326', 'b22f3649b5dd46749637df064f948d5f', '1', null, null);
+INSERT INTO `session` VALUES ('139', '1514252039744', 'e1ab90fff1b24b8093829b89c799da7c', '1', null, null);
+INSERT INTO `session` VALUES ('140', '1514252862181', 'b10d6c66a365450db5109e9b9908b1ec', '1', null, null);
+INSERT INTO `session` VALUES ('141', '1514253462898', 'ed44f9ef208b4036956a2b1c14aeb4ed', '1', null, null);
+INSERT INTO `session` VALUES ('142', '1514254384635', 'ea671433e4aa4e3d84a882d71482bd82', '1', null, null);
+INSERT INTO `session` VALUES ('143', '1514254771560', 'd3e260d6a03d44138635c11fdca4948d', '1', null, null);
+INSERT INTO `session` VALUES ('144', '1514254911039', 'bf9f26a5b36548bc852a55c3554110ce', '1', null, null);
+INSERT INTO `session` VALUES ('145', '1514255497507', 'd6a70d9dc393413084fc0fb125aca22f', '1', null, null);
+INSERT INTO `session` VALUES ('146', '1514337584186', '0f5e109041b74274a092d947f4253d3a', '1', null, null);
+INSERT INTO `session` VALUES ('147', '1514340756621', 'e08c28302571404cbe7fa550526b522e', '1', null, null);
+INSERT INTO `session` VALUES ('148', '1514340863235', '633a406ba9af4b22987631ffd01ed4bc', '1', null, null);
+INSERT INTO `session` VALUES ('149', '1514340985478', '840f9eb90d234705a36ed9b60db3057d', '1', null, null);
+INSERT INTO `session` VALUES ('150', '1514341908484', 'f87ff1c896f645bb85b07471c21e48c4', '1', null, null);
+INSERT INTO `session` VALUES ('151', '1514341989079', '83319e3a6d254c7c9b01d69c37e78972', '1', null, null);
+INSERT INTO `session` VALUES ('152', '1514343944771', '0608116b55864a9eacb10ad1e992749f', '1', null, null);
+INSERT INTO `session` VALUES ('153', '1514344025995', 'a67cd87f68684ce5b01a816664086962', '1', null, null);
+INSERT INTO `session` VALUES ('154', '1514345153504', '9272c495d61441f3848e4061e7dd68ad', '1', null, null);
+INSERT INTO `session` VALUES ('155', '1514345672764', 'fb6825494b37421ba6e25d23c3853f97', '1', null, null);
+INSERT INTO `session` VALUES ('156', '1514347221576', '50783e1ba4b9408795576f32ba630bd9', '1', null, null);
+INSERT INTO `session` VALUES ('157', '1514347854565', '6f528ec84b35406f8fcaee9d40883bac', '1', null, null);
+INSERT INTO `session` VALUES ('158', '1514359735998', 'd801ba001f9f4fd089f3a003ffd38964', '1', null, null);
 
 -- ----------------------------
 -- Table structure for tag
@@ -364,11 +473,16 @@ CREATE TABLE `tag` (
   `create_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tag
 -- ----------------------------
+INSERT INTO `tag` VALUES ('1', '0', 'Java', '0', '2017-12-26 09:56:56', null);
+INSERT INTO `tag` VALUES ('2', '0', 'JavaScript', '0', '2017-12-26 09:57:22', null);
+INSERT INTO `tag` VALUES ('3', '0', 'SpringBoot', '0', '2017-12-26 09:57:31', null);
+INSERT INTO `tag` VALUES ('4', '0', 'C++', '0', '2017-12-26 09:57:46', '2017-12-26 09:59:44');
+INSERT INTO `tag` VALUES ('5', '0', 'PHP', '0', '2017-12-26 09:57:55', null);
 
 -- ----------------------------
 -- Table structure for user
