@@ -63,4 +63,17 @@ public class LinkServiceImpl implements LinkService {
     public void delete(Long id) {
         linkRepository.delete(id);
     }
+
+    @Override
+    public Link change(Long id, String type) {
+        Link link = linkRepository.findOne(id);
+        switch (type){
+            case "status":
+                link.setStatus(link.getStatus() == 0 ? 1:0);
+                break;
+            default:
+                break;
+        }
+        return linkRepository.save(link);
+    }
 }

@@ -48,7 +48,7 @@ public class JcohyApplication extends WebMvcConfigurerAdapter{
 		registry.addViewController("/category/index").setViewName("admin/category/index");
 		//标签管理
 		registry.addViewController("/tag/index").setViewName("admin/tag/index");
-		//标签管理
+		//链接管理
 		registry.addViewController("/link/index").setViewName("admin/link/index");
 	}
 }

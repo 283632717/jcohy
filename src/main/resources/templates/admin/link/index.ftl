@@ -55,8 +55,15 @@
                 <a class="layui-btn" lay-event="edit">编辑</a>
                 <a class="layui-btn layui-btn-danger " lay-event="del">删除</a>
             </script>
+
             <script type="text/html" id="titleTpl">
-                <button class="layui-btn layui-btn-small layui-btn-normal" onclick="layui.datalist.editData({{d.id}})"><i class="layui-icon">&#xe642;</i></button>
+
+                <form class="layui-form" action="">
+                    <div class="layui-form-item" style="margin:0;">
+                        <input type="checkbox" name="status" title="显示" value="{{d.id}}" lay-filter="status" checked />
+                    </div>
+                </form>
+                <#--<button class="layui-btn layui-btn-small layui-btn-normal" onclick="layui.datalist.editData({{d.id}})"><i class="layui-icon">&#xe642;</i></button>-->
             </script>
         </div>
     </div>

@@ -69,4 +69,16 @@ public class AdminLinkController {
         }
         return JsonResult.ok();
     }
+
+    @GetMapping("/{id}/change")
+    public JsonResult change(@PathVariable("id") Long id,String type){
+        try {
+            linkService.change(id,type);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return JsonResult.fail(e.getMessage());
+        }
+        return JsonResult.ok("操作成功");
+    }
 }

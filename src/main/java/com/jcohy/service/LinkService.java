@@ -47,4 +47,11 @@ public interface LinkService {
      * @param id
      */
     void delete(Long id);
+
+    /**
+     *
+     * 修改状态
+     * @param id
+     */
+    Link change(Long id,String type);
 }

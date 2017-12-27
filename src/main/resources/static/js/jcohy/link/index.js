@@ -1,6 +1,7 @@
-layui.define(['laypage', 'layer',  'table','common'], function (exports) {
+layui.define(['laypage', 'layer',  'table','common','form'], function (exports) {
     var $ = layui.jquery,
         layer = layui.layer,
+        form = layui.form,
         laypage = layui.laypage,
         common = layui.common,
         table  = layui.table ;
@@ -47,7 +48,28 @@ layui.define(['laypage', 'layer',  'table','common'], function (exports) {
             }
         }
     });
-
+    form.on('checkbox(status)', function(data){
+        // console.log(data.elem); //得到checkbox原始DOM对象
+        // console.log(data.elem.checked); //开关是否开启，true或者false
+        // console.log(data.value); //开关value值，也可以通过data.elem.value得到
+        // console.log(data.othis); //得到美化后的DOM对象
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: {"type":"status"},
+            url: "/link/" + data.value + "/change",
+            success: function (ret) {
+                if (ret.isOk) {
+                    layer.msg("操作成功", {time: 2000}, function () {
+                        layer.close(index);
+                        window.location.href = "/link/index";
+                    });
+                } else {
+                    layer.msg(ret.msg, {time: 2000});
+                }
+            }
+        })
+    });
 
     //添加数据
     $('#addLink').click(function () {
