@@ -1,6 +1,8 @@
 package com.jcohy.common;
 
 
+import java.io.File;
+
 /**
  * Copyright  : 2017- www.jcohy.com
  * Created by jiac on 2:06 2017/12/16
@@ -47,4 +49,10 @@ public interface Constant {
 	 * session未保存登录状态登录时间设置
 	 */
 	public static final Integer SESSION_UNKEEPLOGIN = 60;
+
+	/**
+	 * 文件上传目录
+	 */
+	public static final String TARGET_FILE_PATH  = "opt";
+
 }
