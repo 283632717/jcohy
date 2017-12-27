@@ -68,7 +68,7 @@
                         <a href="javascript:;"><i class="fa fa-wrench"></i>扩展管理</a>
                         <dl class="layui-nav-child">
                             <dd><a href="javascript:;" data-url="${ctx!}/link/index" data-id="8">友情链接</a></dd>
-                            <dd><a href="javascript:;">博主信息</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/sys/index" data-id="9">系统设置</a></dd>
                             <dd><a href="javascript:;">网站信息</a></dd>
                             <dd><a href="javascript:;" data-url="datalist.html" data-id="5">网站公告</a></dd>
                             <dd><a href="javascript:;" data-url="datalist.html" data-id="6">更新日志</a></dd>
