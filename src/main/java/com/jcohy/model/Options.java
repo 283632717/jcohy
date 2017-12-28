@@ -18,7 +18,6 @@ public class Options extends AbstractModel implements Serializable {
 
 	private static final long serialVersionUID = -7370664893843513614L;
 
-
 	private String optionKey;
 
 	private String optionValue;

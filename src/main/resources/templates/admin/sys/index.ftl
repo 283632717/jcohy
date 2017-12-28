@@ -44,7 +44,8 @@
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">网站标题</label>
                                         <div class="layui-input-block">
-                                            <input name="title" autocomplete="off" placeholder="任意字符，控制在255个字符内" class="layui-input" type="text">
+                                            <input name="title" autocomplete="off" value="${title}"
+                                                   placeholder="任意字符，控制在255个字符内" class="layui-input" type="text">
                                         </div>
                                     </div>
 
@@ -52,13 +53,15 @@
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">网址/域名</label>
                                         <div class="layui-input-block">
-                                            <input name="" autocomplete="off" value="" placeholder="任意字符，控制在255个字符内" class="layui-input" type="text">
+                                            <input name="" autocomplete="off" value="${domain_name}"
+                                                   placeholder="任意字符，控制在255个字符内" class="layui-input" type="text">
                                         </div>
                                     </div>
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">网站关键词</label>
                                         <div class="layui-input-block">
-                                            <input name="" autocomplete="off" value="" placeholder="任意字符，控制在255个字符内" class="layui-input" type="text">
+                                            <input name="" autocomplete="off" value="${keyword}"
+                                                   placeholder="任意字符，控制在255个字符内" class="layui-input" type="text">
                                         </div>
                                     </div>
 
@@ -67,7 +70,8 @@
                                     <div class="layui-form-item layui-form-text">
                                         <label class="layui-form-label">网站描述</label>
                                         <div class="layui-input-block">
-                                            <textarea name="" autocomplete="off" placeholder="请输入内容" class="layui-textarea"></textarea>
+                                            <textarea name="" autocomplete="off"
+                                                      placeholder="请输入内容" class="layui-textarea">${description}</textarea>
                                         </div>
                                     </div>
 
@@ -80,14 +84,16 @@
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">联系电话</label>
                                         <div class="layui-input-block">
-                                            <input name="" autocomplete="off" value="" placeholder="任意字符，控制在255个字符内" class="layui-input" type="text">
+                                            <input name="" autocomplete="off" value="${phone}"
+                                                   placeholder="任意字符，控制在255个字符内" class="layui-input" type="text">
                                         </div>
                                     </div>
 
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">电子邮件</label>
                                         <div class="layui-input-block">
-                                            <input name="" autocomplete="off" value="" placeholder="任意字符，控制在255个字符内" class="layui-input" type="text">
+                                            <input name="" autocomplete="off" value="${email}"
+                                                   placeholder="任意字符，控制在255个字符内" class="layui-input" type="text">
                                         </div>
                                     </div>
 
@@ -95,21 +101,22 @@
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">联系手机</label>
                                         <div class="layui-input-block">
-                                            <input name="" autocomplete="off" value="" placeholder="任意字符，控制在255个字符内" class="layui-input" type="text">
+                                            <input name="" autocomplete="off" value="${phone}"
+                                                   placeholder="任意字符，控制在255个字符内" class="layui-input" type="text">
                                         </div>
                                     </div>
 
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">联系QQ1</label>
                                         <div class="layui-input-block">
-                                            <input name="" autocomplete="off" value="" placeholder="任意字符，控制在255个字符内" class="layui-input" type="text">
+                                            <input name="" autocomplete="off" value="${qq1}" placeholder="任意字符，控制在255个字符内" class="layui-input" type="text">
                                         </div>
                                     </div>
 
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">联系QQ2</label>
                                         <div class="layui-input-block">
-                                            <input name="" autocomplete="off" value="" placeholder="任意字符，控制在255个字符内" class="layui-input" type="text">
+                                            <input name="" autocomplete="off" value="${qq2}" placeholder="任意字符，控制在255个字符内" class="layui-input" type="text">
                                         </div>
                                     </div>
 
@@ -117,14 +124,14 @@
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">备案号</label>
                                         <div class="layui-input-block">
-                                            <input name="" autocomplete="off" value="京ICP备17050179号-1" placeholder="任意字符，控制在255个字符内" class="layui-input" type="text">
+                                            <input name="" autocomplete="off" value="${record_number}" placeholder="任意字符，控制在255个字符内" class="layui-input" type="text">
                                         </div>
                                     </div>
 
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">备案地公安机关</label>
                                         <div class="layui-input-block">
-                                            <input name="" autocomplete="off" value="北京市通州驻区大队" placeholder="任意字符，控制在255个字符内" class="layui-input" type="text">
+                                            <input name="" autocomplete="off" value="${record_address}" placeholder="任意字符，控制在255个字符内" class="layui-input" type="text">
                                         </div>
                                     </div>
 
