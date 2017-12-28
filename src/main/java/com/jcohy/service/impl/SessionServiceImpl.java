@@ -5,6 +5,7 @@ import com.jcohy.repository.SessionRepository;
 import com.jcohy.service.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Copyright  : 2015-2033 Beijing Startimes Communication & Network Technology Co.Ltd
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
  * Description  :
  */
 @Service
+@Transactional
 public class SessionServiceImpl implements SessionService {
 
     @Autowired
