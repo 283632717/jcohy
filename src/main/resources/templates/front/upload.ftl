@@ -39,13 +39,12 @@
         var $ = layui.jquery
                 ,upload = layui.upload;
 
-        //多文件列表示例
+
         var demoListView = $('#demoList')
                 ,uploadListIns = upload.render({
             elem: '#testList'
             ,url: '/upload'
-            ,accept: 'file'
-            ,multiple: true
+            ,method: 'post'
             ,auto: false
             ,bindAction: '#testListAction'
             ,choose: function(obj){
@@ -76,6 +75,7 @@
                     });
 
                     demoListView.append(tr);
+
                 });
             }
             ,done: function(res, index, upload){

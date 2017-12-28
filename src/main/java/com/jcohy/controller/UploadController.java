@@ -1,13 +1,12 @@
 package com.jcohy.controller;
 
-import com.jcohy.common.Constant;
 import com.jcohy.common.JsonResult;
-import org.aspectj.util.FileUtil;
+import org.apache.commons.io.FileUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
@@ -20,17 +19,25 @@ import java.io.*;
 @Controller
 public class UploadController {
 
+
+    @Value("${file.path}")
+    private String filePath;
+
+
+
     @PostMapping("/upload")
     @ResponseBody
     public JsonResult upload(@RequestParam("file") MultipartFile file){
 
-        File target = new File(Constant.TARGET_FILE_PATH);
+        System.out.println(filePath+file.getOriginalFilename());
+
+        File target = new File(filePath);
         if(!target.exists()){
             target.mkdir();
         }
         System.out.println(file.getOriginalFilename());
         try {
-            file.transferTo(new File(target,file.getOriginalFilename()));
+            FileUtils.copyInputStreamToFile(file.getInputStream(),new File(filePath+file.getOriginalFilename()));
         } catch (IOException e) {
             e.printStackTrace();
             return JsonResult.fail(e.getMessage());
@@ -39,9 +46,11 @@ public class UploadController {
     }
 
     @GetMapping("/download")
-    public void download(@RequestParam("name") String name, HttpServletRequest request, HttpServletResponse response) throws IOException {
-        File file = new File(Constant.TARGET_FILE_PATH,name);
-        System.out.println(file.getPath());
+    public void download(@RequestParam("name") String name, HttpServletResponse response) throws IOException {
+
+
+        File file = new File(filePath,name);
+        System.out.println(filePath);
         if(file.exists()) {
             // 设置强制下载不打开
             response.setContentType("application/force-download");

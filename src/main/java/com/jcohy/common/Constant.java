@@ -50,9 +50,5 @@ public interface Constant {
 	 */
 	public static final Integer SESSION_UNKEEPLOGIN = 60;
 
-	/**
-	 * 文件上传目录
-	 */
-	public static final String TARGET_FILE_PATH  = "opt";
 
 }
