@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50637
 File Encoding         : 65001
 
-Date: 2017-12-27 17:15:24
+Date: 2017-12-28 14:57:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -75,6 +75,8 @@ CREATE TABLE `link` (
   `url` varchar(500) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL COMMENT '站长邮箱',
   `description` varchar(255) DEFAULT NULL,
+  `category` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT '0',
   `create_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
@@ -84,8 +86,8 @@ CREATE TABLE `link` (
 -- ----------------------------
 -- Records of link
 -- ----------------------------
-INSERT INTO `link` VALUES ('1', '百度', 'http://www.baidu.com', 'hhh@qq.com', '百度首页', '0', '2017-12-27 09:19:24', '2017-12-27 13:06:51');
-INSERT INTO `link` VALUES ('2', 'layui', 'http://www.layui.com/', 'xian@qq.com', '经典模块化前端UI框架', '0', '2017-12-27 09:56:37', '2017-12-27 10:33:28');
+INSERT INTO `link` VALUES ('1', '百度', 'http://www.baidu.com', 'hhh@qq.com', '百度首页', null, null, '0', '2017-12-27 09:19:24', '2017-12-27 13:06:51');
+INSERT INTO `link` VALUES ('2', 'layui', 'http://www.layui.com/', 'xian@qq.com', '经典模块化前端UI框架', null, null, '0', '2017-12-27 09:56:37', '2017-12-27 10:33:28');
 
 -- ----------------------------
 -- Table structure for login_log
@@ -101,7 +103,7 @@ CREATE TABLE `login_log` (
   PRIMARY KEY (`id`),
   KEY `FKa9ca70emkdxbpw4u0voihgers` (`user_id`),
   CONSTRAINT `FKa9ca70emkdxbpw4u0voihgers` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=159 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of login_log
@@ -264,6 +266,11 @@ INSERT INTO `login_log` VALUES ('155', '0:0:0:0:0:0:0:1', '2017-12-27 11:33:33',
 INSERT INTO `login_log` VALUES ('156', '0:0:0:0:0:0:0:1', '2017-12-27 11:59:22', '1', null, null);
 INSERT INTO `login_log` VALUES ('157', '0:0:0:0:0:0:0:1', '2017-12-27 12:09:55', '1', null, null);
 INSERT INTO `login_log` VALUES ('158', '192.168.21.132', '2017-12-27 15:27:56', '1', null, null);
+INSERT INTO `login_log` VALUES ('159', '0:0:0:0:0:0:0:1', '2017-12-28 10:50:34', '1', null, null);
+INSERT INTO `login_log` VALUES ('160', '0:0:0:0:0:0:0:1', '2017-12-28 11:22:31', '1', null, null);
+INSERT INTO `login_log` VALUES ('161', '0:0:0:0:0:0:0:1', '2017-12-28 11:27:53', '1', null, null);
+INSERT INTO `login_log` VALUES ('162', '0:0:0:0:0:0:0:1', '2017-12-28 11:31:42', '1', null, null);
+INSERT INTO `login_log` VALUES ('163', '0:0:0:0:0:0:0:1', '2017-12-28 11:35:13', '1', null, null);
 
 -- ----------------------------
 -- Table structure for options
@@ -271,17 +278,27 @@ INSERT INTO `login_log` VALUES ('158', '192.168.21.132', '2017-12-27 15:27:56', 
 DROP TABLE IF EXISTS `options`;
 CREATE TABLE `options` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `description` varchar(255) DEFAULT NULL,
   `option_key` varchar(255) DEFAULT NULL,
   `option_value` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
   `create_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of options
 -- ----------------------------
+INSERT INTO `options` VALUES ('1', 'title', '个人博客', null, null, null);
+INSERT INTO `options` VALUES ('2', 'domain_name', 'www.jcohy.com', null, null, null);
+INSERT INTO `options` VALUES ('3', 'keyword', 'jcohy，个人博客', null, '2017-12-28 11:36:24', '2017-12-28 11:36:24');
+INSERT INTO `options` VALUES ('4', 'description', '描述', null, null, null);
+INSERT INTO `options` VALUES ('5', 'email', 'jia_chao23@126.com', null, null, null);
+INSERT INTO `options` VALUES ('6', 'phone', '18515892938', null, null, null);
+INSERT INTO `options` VALUES ('7', 'qq1', '317022800', null, '2017-12-28 11:32:35', '2017-12-28 11:32:35');
+INSERT INTO `options` VALUES ('8', 'qq2', '317022800', null, '2017-12-28 11:34:38', '2017-12-28 11:34:38');
+INSERT INTO `options` VALUES ('9', 'record_number', '京ICP备17050179号-1', null, '2017-12-28 11:34:44', '2017-12-28 11:34:44');
+INSERT INTO `options` VALUES ('10', 'record_address', '北京市通州驻区大队', null, '2017-12-28 11:34:48', '2017-12-28 11:34:48');
 
 -- ----------------------------
 -- Table structure for session
@@ -297,7 +314,7 @@ CREATE TABLE `session` (
   PRIMARY KEY (`id`),
   KEY `FK1bi1pmqjgipw7dx3j6bl37dja` (`user_id`),
   CONSTRAINT `FK1bi1pmqjgipw7dx3j6bl37dja` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=159 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of session
@@ -460,6 +477,11 @@ INSERT INTO `session` VALUES ('155', '1514345672764', 'fb6825494b37421ba6e25d23c
 INSERT INTO `session` VALUES ('156', '1514347221576', '50783e1ba4b9408795576f32ba630bd9', '1', null, null);
 INSERT INTO `session` VALUES ('157', '1514347854565', '6f528ec84b35406f8fcaee9d40883bac', '1', null, null);
 INSERT INTO `session` VALUES ('158', '1514359735998', 'd801ba001f9f4fd089f3a003ffd38964', '1', null, null);
+INSERT INTO `session` VALUES ('159', '1514429494123', 'c488b2e309a14e89bb57544417798ec8', '1', null, null);
+INSERT INTO `session` VALUES ('160', '1514431410965', '962209f979e8490c81894867687a87d0', '1', null, null);
+INSERT INTO `session` VALUES ('161', '1514431733230', 'a519bd8bd02b435b833cf0083712ef7f', '1', null, null);
+INSERT INTO `session` VALUES ('162', '1514431961812', 'a1c135cd6f384c3eabf48946c5b5ebbf', '1', null, null);
+INSERT INTO `session` VALUES ('163', '1514432173393', 'f38d92b7d8f042a18ce346c1744c8955', '1', null, null);
 
 -- ----------------------------
 -- Table structure for tag
