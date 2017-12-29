@@ -4,6 +4,8 @@ import com.jcohy.model.Blog;
 import com.jcohy.repository.BlogRepository;
 import com.jcohy.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,19 +30,24 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public Blog findBlogById(Long id) {
+    public Page<Blog> findAll(Pageable Pageable) {
+        return blogRepository.findAll(Pageable);
+    }
+
+    @Override
+    public Blog findById(Long id) {
         return blogRepository.findOne(id);
     }
 
     @Override
-    public void saveOrUpdateBlog(Blog blog) {
+    public void saveOrUpdate(Blog blog) {
 
-        blogRepository.saveAndFlush(blog);
     }
 
     @Override
-    public void deleteBlog(Long id) {
-            blogRepository.delete(id);
+    public void delete(Long id) {
+        blogRepository.delete(id);
     }
+
 
 }

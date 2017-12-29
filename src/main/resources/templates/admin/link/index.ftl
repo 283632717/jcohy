@@ -56,7 +56,7 @@
                 <a class="layui-btn layui-btn-danger " lay-event="del">删除</a>
             </script>
 
-            <script type="text/html" id="titleTpl">
+            <script type="text/html" id="choicesTpl">
 
                 <form class="layui-form" action="">
                     <div class="layui-form-item" style="margin:0;">

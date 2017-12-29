@@ -1,6 +1,6 @@
 ﻿﻿<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html >
 <head>
     <meta charset="utf-8" />
     <title>Jcohy后台管理系统</title>
@@ -69,7 +69,7 @@
                         <dl class="layui-nav-child">
                             <dd><a href="javascript:;" data-url="${ctx!}/link/index" data-id="8">友情链接</a></dd>
                             <dd><a href="javascript:;" data-url="${ctx!}/sys/index" data-id="9">系统设置</a></dd>
-                            <dd><a href="javascript:;" data-url="datalist.html" data-id="5">网站公告</a></dd>
+                            <dd><a href="javascript:;" data-url="datalist.html" data-id="10">网站公告</a></dd>
                             <dd><a href="javascript:;" data-url="datalist.html" data-id="6">更新日志</a></dd>
                             <dd><a href="javascript:;" data-url="datalist.html" data-id="7">留言管理</a></dd>
                         </dl>

@@ -7,58 +7,30 @@
     <!-- layui.css -->
     <link href="${ctx!}/js/plugins/layui/css/layui.css" rel="stylesheet" />
     <style>
-        .layui-btn-small {
-            padding: 0 15px;
-        }
 
-        .layui-form-checkbox {
-            margin: 0;
-        }
 
         tr td:not(:nth-child(0)),
         tr th:not(:nth-child(0)) {
             text-align: center;
         }
 
-        #dataConsole {
-            text-align: center;
-        }
-        /*分页页容量样式*/
         /*可选*/
-        .layui-laypage {
-            display: block;
+        .layui-laypage > * {
+            float: left;
+        }
+        .layui-field-title .layui-field-box{
+            padding: 10px 20px 10px 30px;
+        }
+        .layui-table-cell{
+            padding-top: 4px;
+            height: 45px;
         }
 
-            /*可选*/
-            .layui-laypage > * {
-                float: left;
-            }
-            /*可选*/
-            .layui-laypage .laypage-extend-pagesize {
-                float: right;
-            }
-            /*可选*/
-            .layui-laypage:after {
-                content: ".";
-                display: block;
-                height: 0;
-                clear: both;
-                visibility: hidden;
-            }
 
-            /*必须*/
-            .layui-laypage .laypage-extend-pagesize {
-                height: 30px;
-                line-height: 30px;
-                margin: 0px;
-                border: none;
-                font-weight: 400;
-            }
-        /*分页页容量样式END*/
     </style>
 </head>
 <body>
-    <fieldset id="dataConsole" class="layui-elem-field layui-field-title"  style="display:none;">
+    <fieldset id="dataConsole" class="layui-elem-field layui-field-title">
         <legend>文章管理</legend>
         <div class="layui-field-box">
             <div id="articleIndexTop">
@@ -95,62 +67,43 @@
         </div>
     </fieldset>
 
-    <fieldset id="dataList" class="layui-elem-field layui-field-title sys-list-field" style="display:none;">
+    <fieldset id="dataList" class="layui-elem-field layui-field-title sys-list-field">
         <legend style="text-align:center;">文章列表</legend>
         <div class="layui-field-box">
             <div id="dataContent" class="">
-                <!--内容区域 ajax获取-->
-                <table style="" class="layui-table" lay-even="">
-                    <colgroup>
-                        <col width="180">
-                        <col>
-                        <col width="150">
-                        <col width="180">
-                        <col width="90">
-                        <col width="90">
-                        <col width="50">
-                        <col width="50">
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th>发表时间</th>
-                            <th>标题</th>
-                            <th>作者</th>
-                            <th>类别</th>
-                            <th colspan="2">选项</th>
-                            <th colspan="2">操作</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>2017-03-22 23:07</td>
-                            <td>不落阁后台模板源码分享</td>
-                            <td>Absolutely</td>
-                            <td>Web前端</td>
-                            <td>
-                                <form class="layui-form" action="">
-                                    <div class="layui-form-item" style="margin:0;">
-                                        <input type="checkbox" name="top" title="置顶" lay-filter="top" checked>
-                                    </div>
-                                </form>
-                            </td>
-                            <td>
-                                <form class="layui-form" action="">
-                                    <div class="layui-form-item" style="margin:0;">
-                                        <input type="checkbox" name="top" title="推荐" lay-filter="recommend" checked>
-                                    </div>
-                                </form>
-                            </td>
-                            <td>
-                                <button class="layui-btn layui-btn-small layui-btn-normal"><i class="layui-icon">&#xe642;</i></button>
-                            </td>
-                            <td>
-                                <button class="layui-btn layui-btn-small layui-btn-danger"><i class="layui-icon">&#xe640;</i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div id="pageNav"></div>
+
+                <table class="layui-hide" id="blog" lay-filter="table"></table>
+                <script type="text/html" id="operator">
+                    <a class="layui-btn" lay-event="edit">编辑</a>
+                    <a class="layui-btn layui-btn-danger " lay-event="del">删除</a>
+                </script>
+
+                <script type="text/html" id="choicesTpl">
+                    <form class="layui-form" action="">
+
+                        <div class="layui-form-item" style="margin:0;">
+                            {{#  if(d.isTop == 0){ }}
+                            <input type="checkbox" name="isTop" title="置顶" value="{{d.id}}" lay-filter="isTop" checked />
+                            {{#  } else { }}
+                            <input type="checkbox" name="isTop" title="置顶" value="{{d.id}}" lay-filter="isTop" />
+                            {{#  } }}
+
+                            {{#  if(d.isRecommend == 0){ }}
+                            <input type="checkbox" name="isRecommend" title="推荐" value="{{d.id}}" lay-filter="isRecommend" checked />
+                            {{#  } else { }}
+                            <input type="checkbox" name="isRecommend" title="推荐" value="{{d.id}}" lay-filter="isRecommend" />
+                            {{#  } }}
+
+                            {{#  if(d.privacy == 0){ }}
+                            <input type="checkbox" name="privacy" title="公开" value="{{d.id}}" lay-filter="privacy"  checked  />
+                            {{#  } else { }}
+                            <input type="checkbox" name="privacy" title="公开" value="{{d.id}}" lay-filter="privacy" />
+                            {{#  } }}
+
+                        </div>
+                    </form>
+                    <#--<button class="layui-btn layui-btn-small layui-btn-normal" onclick="layui.datalist.editData({{d.id}})"><i class="layui-icon">&#xe642;</i></button>-->
+                </script>
             </div>
         </div>
     </fieldset>

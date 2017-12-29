@@ -25,6 +25,11 @@ public class Link extends AbstractModel implements Serializable {
 
     private String description;
 
+    @Column(name = "category")
+    private String category;
+
+    @Column(name = "type")
+    private String type;
     /**
      * 0 可见 1 隐藏
      */

@@ -1,14 +1,19 @@
 package com.jcohy.controller.admin;
 
 import com.jcohy.common.JsonResult;
+import com.jcohy.common.PageJson;
+import com.jcohy.controller.BaseController;
 import com.jcohy.exception.ServiceException;
 import com.jcohy.model.Blog;
 import com.jcohy.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -21,28 +26,25 @@ import java.util.List;
  **/
 @Controller
 @RequestMapping("/blog")
-public class AdminBlogController {
+public class AdminBlogController extends BaseController{
 
 
     @Autowired
     private BlogService blogService;
 
-    @GetMapping("/index")
-    private String index(){
-        return "admin/datalist";
-    }
-
     @GetMapping("/list")
-    private JsonResult list(){
-
-        try{
-            List<Blog> blogs = blogService.findAll();
-            blogs.forEach(System.out::println);
-            return JsonResult.ok();
-        }catch (ServiceException e){
-            return JsonResult.fail();
-        }
+    @ResponseBody
+    public PageJson<Blog> all(ModelMap map){
+        List<Blog> categories = blogService.findAll();
+        PageJson<Blog> page = new PageJson<>();
+        page.setCode(0);
+        page.setMsg("成功");
+        page.setCount(categories.size());
+        page.setData(categories);
+        return page;
     }
+
+
     @GetMapping("/form")
     private String form(){
 

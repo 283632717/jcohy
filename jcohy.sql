@@ -23,7 +23,7 @@ CREATE TABLE `blog` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) DEFAULT NULL,
   `content` longtext,
-  `featured` int(11) DEFAULT NULL,
+  `isTop` int(11) DEFAULT NULL,
   `privacy` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `summary` varchar(500) DEFAULT NULL,

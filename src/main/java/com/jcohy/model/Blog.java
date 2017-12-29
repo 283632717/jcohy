@@ -25,7 +25,12 @@ public class Blog extends AbstractModel implements Serializable {
     @Lob
     private String content;
 
-    private Integer featured;
+    @Column(name = "istop")
+    private Integer isTop;
+
+    @Column(name = "isrecomment")
+    private Integer isRecommend;
+
 
     /**
      * 权限级别<br>
@@ -53,6 +58,13 @@ public class Blog extends AbstractModel implements Serializable {
     private Integer views;
 
 
+    public Integer getIsRecommend() {
+        return isRecommend;
+    }
+
+    public void setIsRecommend(Integer isRecommend) {
+        this.isRecommend = isRecommend;
+    }
 
     public User getAuthor() {
         return author;
@@ -70,12 +82,12 @@ public class Blog extends AbstractModel implements Serializable {
         this.content = content;
     }
 
-    public Integer getFeatured() {
-        return featured;
+    public Integer getIsTop() {
+        return isTop;
     }
 
-    public void setFeatured(Integer featured) {
-        this.featured = featured;
+    public void setIsTop(Integer isTop) {
+        this.isTop = isTop;
     }
 
     public Integer getPrivacy() {
@@ -134,4 +146,21 @@ public class Blog extends AbstractModel implements Serializable {
         this.views = views;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Blog{");
+        sb.append("author=").append(author);
+        sb.append(", content='").append(content).append('\'');
+        sb.append(", isTop=").append(isTop);
+        sb.append(", isRecommend=").append(isRecommend);
+        sb.append(", privacy=").append(privacy);
+        sb.append(", status=").append(status);
+        sb.append(", category=").append(category);
+        sb.append(", summary='").append(summary).append('\'');
+        sb.append(", tags='").append(tags).append('\'');
+        sb.append(", title='").append(title).append('\'');
+        sb.append(", views=").append(views);
+        sb.append('}');
+        return sb.toString();
+    }
 }

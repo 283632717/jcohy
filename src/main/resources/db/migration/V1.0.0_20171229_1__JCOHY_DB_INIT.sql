@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50637
 File Encoding         : 65001
 
-Date: 2017-12-29 13:58:29
+Date: 2017-12-29 16:14:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,11 +23,12 @@ CREATE TABLE `blog` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) DEFAULT NULL,
   `content` longtext,
-  `featured` int(11) DEFAULT NULL,
   `privacy` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `summary` varchar(500) DEFAULT NULL,
   `tags` varchar(255) DEFAULT NULL,
+  `istop` int(11)  DEFAULT '0',
+  `isrecomment` int(11) DEFAULT '0',
   `views` int(11) NOT NULL DEFAULT '0',
   `author_id` bigint(20) DEFAULT NULL,
   `category_id` bigint(20) DEFAULT NULL,
@@ -161,34 +162,7 @@ INSERT INTO `options` VALUES ('8', 'qq2', '317022800', null, '2017-12-28 11:34:3
 INSERT INTO `options` VALUES ('9', 'record_number', '京ICP备17050179号-1', null, '2017-12-28 11:34:44', '2017-12-28 11:34:44');
 INSERT INTO `options` VALUES ('10', 'record_address', '北京市通州驻区大队', null, '2017-12-28 11:34:48', '2017-12-28 11:34:48');
 
--- ----------------------------
--- Table structure for schema_version
--- ----------------------------
-DROP TABLE IF EXISTS `schema_version`;
-CREATE TABLE `schema_version` (
-  `installed_rank` int(11) NOT NULL,
-  `version` varchar(50) DEFAULT NULL,
-  `description` varchar(200) NOT NULL,
-  `type` varchar(20) NOT NULL,
-  `script` varchar(1000) NOT NULL,
-  `checksum` int(11) DEFAULT NULL,
-  `installed_by` varchar(100) NOT NULL,
-  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `execution_time` int(11) NOT NULL,
-  `success` tinyint(1) NOT NULL,
-  PRIMARY KEY (`installed_rank`),
-  KEY `schema_version_s_idx` (`success`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of schema_version
--- ----------------------------
-INSERT INTO `schema_version` VALUES ('1', '1', '<< Flyway Baseline >>', 'BASELINE', '<< Flyway Baseline >>', null, 'root', '2017-12-29 13:28:47', '0', '1');
-INSERT INTO `schema_version` VALUES ('2', '1.0.0.20171229.1', 'JCOHY DB INIT', 'SQL', 'V1.0.0_20171229_1__JCOHY_DB_INIT.sql', '735614097', 'root', '2017-12-29 13:28:51', '3952', '1');
-INSERT INTO `schema_version` VALUES ('3', '1.0.0.20171229.2', 'JCOHY TABLE CREATE', 'SQL', 'V1.0.0_20171229_2__JCOHY_TABLE_CREATE.sql', '-192750763', 'root', '2017-12-29 13:28:53', '1227', '1');
-INSERT INTO `schema_version` VALUES ('4', '1.0.0.20171229.3', 'ADD SOME DATA', 'SQL', 'V1.0.0_20171229_3__ADD_SOME_DATA.sql', '1449015718', 'root', '2017-12-29 13:56:20', '393', '0');
-
--- ----------------------------
+ ----------------------------
 -- Table structure for session
 -- ----------------------------
 DROP TABLE IF EXISTS `session`;
@@ -203,10 +177,6 @@ CREATE TABLE `session` (
   KEY `user_session_id` (`user_id`),
   CONSTRAINT `user_session_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of session
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for tag

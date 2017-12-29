@@ -33,13 +33,13 @@ public class BaseController {
 
     protected PageRequest getPageRequest(){
         Integer pageNumber = 0;
-        String pageNumberStr = request.getParameter("pageNumber");
+        String pageNumberStr = request.getParameter("page");
         System.out.println(pageNumberStr);
         if(!StringUtils.isBlank(pageNumberStr)){
             pageNumber = Integer.parseInt(pageNumberStr)-1;
         }
         Integer pageSize = 10;
-        String pageSizeStr = request.getParameter("pageSize");
+        String pageSizeStr = request.getParameter("limit");
         if(!StringUtils.isBlank(pageSizeStr)){
             pageSize = Integer.parseInt(pageSizeStr);
         }
