@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50637
 File Encoding         : 65001
 
-Date: 2017-12-29 10:30:44
+Date: 2017-12-29 13:58:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -75,19 +75,20 @@ CREATE TABLE `link` (
   `url` varchar(500) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL COMMENT '站长邮箱',
   `description` varchar(255) DEFAULT NULL,
-  `category` varchar(255) DEFAULT NULL,
-  `type` varchar(255) DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT '0',
   `create_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+  `menu_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk` (`menu_id`),
+  CONSTRAINT `fk` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of link
 -- ----------------------------
-INSERT INTO `link` VALUES ('1', '百度', 'http://www.baidu.com', 'hhh@qq.com', '百度首页', '搜索', '搜索', '0', '2017-12-29 10:16:49', '2017-12-29 10:16:49');
-INSERT INTO `link` VALUES ('2', 'layui', 'http://www.layui.com/', 'xian@qq.com', '经典模块化前端UI框架', 'IT', '前端', '0', '2017-12-29 10:16:57', '2017-12-29 10:16:57');
+INSERT INTO `link` VALUES ('1', '百度', 'http://www.baidu.com', 'hhh@qq.com', '百度首页', '0', '2017-12-29 10:16:49', '2017-12-29 10:16:49', null);
+INSERT INTO `link` VALUES ('2', 'layui', 'http://www.layui.com/', 'xian@qq.com', '经典模块化前端UI框架', '0', '2017-12-29 10:16:57', '2017-12-29 10:16:57', null);
 
 -- ----------------------------
 -- Table structure for login_log
@@ -103,7 +104,34 @@ CREATE TABLE `login_log` (
   PRIMARY KEY (`id`),
   KEY `user_login_id` (`user_id`),
   CONSTRAINT `user_login_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of login_log
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for menu
+-- ----------------------------
+DROP TABLE IF EXISTS `menu`;
+CREATE TABLE `menu` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `code` int(11) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `parent_code` int(11) DEFAULT NULL,
+  `content` longtext,
+  `create_date` timestamp NULL DEFAULT NULL,
+  `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of menu
+-- ----------------------------
+INSERT INTO `menu` VALUES ('1', '100100', '搜索', '0', '搜索', '2017-12-29 11:42:40', '2017-12-29 11:42:42');
+INSERT INTO `menu` VALUES ('2', '100200', 'IT', '0', '互联网', '2017-12-29 11:42:40', '2017-12-29 11:42:42');
+INSERT INTO `menu` VALUES ('3', '100101', '百度', '100000', '百度', '2017-12-29 11:42:40', '2017-12-29 11:42:42');
+INSERT INTO `menu` VALUES ('4', '100201', '前端', '100200', '前端', '2017-12-29 11:42:40', '2017-12-29 11:42:42');
 
 -- ----------------------------
 -- Table structure for options
@@ -134,6 +162,33 @@ INSERT INTO `options` VALUES ('9', 'record_number', '京ICP备17050179号-1', nu
 INSERT INTO `options` VALUES ('10', 'record_address', '北京市通州驻区大队', null, '2017-12-28 11:34:48', '2017-12-28 11:34:48');
 
 -- ----------------------------
+-- Table structure for schema_version
+-- ----------------------------
+DROP TABLE IF EXISTS `schema_version`;
+CREATE TABLE `schema_version` (
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) DEFAULT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`installed_rank`),
+  KEY `schema_version_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of schema_version
+-- ----------------------------
+INSERT INTO `schema_version` VALUES ('1', '1', '<< Flyway Baseline >>', 'BASELINE', '<< Flyway Baseline >>', null, 'root', '2017-12-29 13:28:47', '0', '1');
+INSERT INTO `schema_version` VALUES ('2', '1.0.0.20171229.1', 'JCOHY DB INIT', 'SQL', 'V1.0.0_20171229_1__JCOHY_DB_INIT.sql', '735614097', 'root', '2017-12-29 13:28:51', '3952', '1');
+INSERT INTO `schema_version` VALUES ('3', '1.0.0.20171229.2', 'JCOHY TABLE CREATE', 'SQL', 'V1.0.0_20171229_2__JCOHY_TABLE_CREATE.sql', '-192750763', 'root', '2017-12-29 13:28:53', '1227', '1');
+INSERT INTO `schema_version` VALUES ('4', '1.0.0.20171229.3', 'ADD SOME DATA', 'SQL', 'V1.0.0_20171229_3__ADD_SOME_DATA.sql', '1449015718', 'root', '2017-12-29 13:56:20', '393', '0');
+
+-- ----------------------------
 -- Table structure for session
 -- ----------------------------
 DROP TABLE IF EXISTS `session`;
@@ -148,6 +203,10 @@ CREATE TABLE `session` (
   KEY `user_session_id` (`user_id`),
   CONSTRAINT `user_session_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of session
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for tag
