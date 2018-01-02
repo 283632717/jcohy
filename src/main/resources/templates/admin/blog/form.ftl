@@ -68,32 +68,36 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <section class="panel panel-padding">
-                    <form id="form1" class="layui-form " data-params='{"dataName":"article","key":"id","bind":true,"action":"edit"}' action="./data/edit.json" method="get">
-                        <div class="layui-form-item">
-                            <label class="layui-form-label" style="margin-top: 10px">文章标题</label>
+                    <form id="form1" class="layui-form "  method="get">
+                        <div class="layui-form-item" style="margin-top: 10px">
+                            <label class="layui-form-label">文章标题</label>
                             <div class="layui-input-block">
-                                <input type="text" name="title" jq-verify="required" jq-error="请输入标题|请输入数字" placeholder="请输入标题" autocomplete="off" class="layui-input ">
+                                <input type="text" name="title" required  placeholder="请输入标题" value="${blog.title}"
+                                       autocomplete="off" class="layui-input ">
                             </div>
                         </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label">关键字</label>
                             <div class="layui-input-block">
-                                <input type="text" name="text" jq-verify="required" placeholder="请输入关键字，多个请用英文逗号隔开" autocomplete="off" class="layui-input">
+                                <input type="text" name="keyword" required placeholder="请输入关键字，多个请用英文逗号隔开" value="${blog.keyword}"
+                                       autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-form-item ">
                             <label class="layui-form-label">描述</label>
                             <div class="layui-input-block">
-                                <textarea name="desc" placeholder="请输入描述" class="layui-textarea"></textarea>
+                                <textarea name="description" placeholder="请输入描述" class="layui-textarea">${blog.description}</textarea>
                             </div>
                         </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label">所属分类</label>
                             <div class="layui-input-inline">
-                                <select name="cat_id" id="select-cat" jq-verify="required" jq-error="请输入分类" lay-filter="verify">
+                                <select name="category" id="select-cat" required  lay-filter="verify">
                                     <option value="">请选择</option>
                                 <#list categories as x>
-                                    <option >${x.name}</option>
+                                    <option value="${x.name}"
+                                        <#if (blog.name == x.name)> selected="selected" </#if>
+                                    >${x.name}</option>
                                 </#list>
 
                                 </select>
@@ -102,7 +106,8 @@
                         <div class="layui-form-item ">
                             <label class="layui-form-label">作者</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="author" placeholder="请输入作者" autocomplete="off" class="layui-input">
+                                <input type="text" name="author" placeholder="请输入作者" value="${blog.author.name}"
+                                       autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-form-item ">
@@ -111,6 +116,7 @@
                                 <input type="text" name="from" placeholder="请输入文章来源" autocomplete="off" class="layui-input">
                             </div>
                         </div>
+
                         <div class="layui-form-item" pane>
                             <label class="layui-form-label">推荐</label>
                             <div class="layui-input-inline">
@@ -127,10 +133,10 @@
                             </div>
                         </div>
                         <div class="layui-form-item" pane>
-                            <label class="layui-form-label">审核</label>
+                            <label class="layui-form-label">公开</label>
                             <div class="layui-input-inline">
-                                <input type="radio" name="status" title="是" value="1" checked />
-                                <input type="radio" name="status" title="否" value="0" />
+                                <input type="radio" name="privacy" title="是" value="1" checked />
+                                <input type="radio" name="privacy" title="否" value="0" />
                             </div>
                         </div>
 
@@ -141,6 +147,7 @@
                                 <#list tags as x>
                                 <div class="tag" data-id="${x.id}">
                                     <p class="text">${x.name}</p>
+
                                     <p class="tick-box">
                                         <span class="tick-bg"></span>
                                         <i class="layui-icon tick">&#xe618;</i>
@@ -173,7 +180,7 @@
                         </div>
                         <div class="layui-form-item">
                             <div class="layui-input-block">
-                                <button class="layui-btn" jq-submit lay-filter="submit">立即提交</button>
+                                <button class="layui-btn" lay-submit lay-filter="*">立即提交</button>
                                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                             </div>
                         </div>
@@ -193,7 +200,7 @@
     var ue = UE.getEditor('content');
     layui.config({
         base: '${ctx}/js/jcohy/'
-    }).use('blog/index');
+    }).use('blog/form');
 </script>
 </body>
 
