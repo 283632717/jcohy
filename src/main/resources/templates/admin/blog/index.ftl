@@ -109,6 +109,7 @@
     </fieldset>
     <!-- layui.js -->
     <script src="${ctx!}/js/plugins/layui/layui.js"></script>
+
     <!-- layui规范化用法 -->
     <script type="text/javascript">
         layui.config({

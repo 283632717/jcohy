@@ -1,11 +1,17 @@
-﻿﻿layui.define(['laypage', 'layer', 'table','form', 'pagesize','laytpl'], function (exports) {
+﻿﻿layui.define(['laypage', 'layer', 'table','form', 'pagesize','laytpl','common','tags','upload'], function (exports) {
     var $ = layui.jquery,
         layer = layui.layer,
         form = layui.form,
         laytpl = layui.laytpl,
-        table = layui.table;
+        table = layui.table,
+        common = layui.common,
+        tags = layui.tags,
+
         laypage = layui.laypage;
+
     var laypageId = 'pageNav';
+
+    tags.init();
 
     table.render({
         elem: '#blog'
@@ -35,40 +41,79 @@
         if(obj.event === 'del'){
             del(data.id);
         } else if(obj.event === 'edit'){
-            common.frame_show('分类编辑','/category/form?id='+data.id,'720','430');
+            common.frame_show('文章编辑','/blog/form?id='+data.id,$(window).width(),$(window).height());
         }
     });
 
     //监听置顶CheckBox
-    form.on('checkbox(top)', function (data) {
-        var index = layer.load(1);
-        setTimeout(function () {
-            layer.close(index);
-            if (data.elem.checked) {
-                data.elem.checked = false;
+    form.on('checkbox(isTop)', function (data) {
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: {"type":"isTop"},
+            url: "/blog/" + data.value + "/change",
+            success: function (ret) {
+                if (ret.isOk) {
+                    layer.msg("操作成功", {time: 2000}, function () {
+                        layer.close(index);
+                        window.location.href = "/blog/index";
+                    });
+                } else {
+                    layer.msg(ret.msg, {time: 2000});
+                }
             }
-            else {
-                data.elem.checked = true;
-            }
-            layer.msg('操作失败，返回原来状态');
-            form.render();  //重新渲染
-        }, 300);
+        })
     });
 
+
     //监听推荐CheckBox
-    form.on('checkbox(recommend)', function (data) {
-        var index = layer.load(1);
-        setTimeout(function () {
-            layer.close(index);
-            layer.msg('操作成功');
-        }, 300);
+    form.on('checkbox(isRecommend)', function (data) {
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: {"type":"isRecommend"},
+            url: "/blog/" + data.value + "/change",
+            success: function (ret) {
+                if (ret.isOk) {
+                    layer.msg("操作成功", {time: 2000}, function () {
+                        layer.close(index);
+                        window.location.href = "/blog/index";
+                    });
+                } else {
+                    layer.msg(ret.msg, {time: 2000});
+                }
+            }
+        })
     });
+
+
+    //监听私密CheckBox
+    form.on('checkbox(privacy)', function (data) {
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: {"type":"privacy"},
+            url: "/blog/" + data.value + "/change",
+            success: function (ret) {
+                if (ret.isOk) {
+                    layer.msg("操作成功", {time: 2000}, function () {
+                        layer.close(index);
+                        window.location.href = "/blog/index";
+                    });
+                } else {
+                    layer.msg(ret.msg, {time: 2000});
+                }
+            }
+        })
+    });
+
     //添加数据
     $('#addArticle').click(function () {
         var index = layer.load(1);
         setTimeout(function () {
             layer.close(index);
-            layer.msg('打开添加窗口');
+            common.frame_show('文章添加','/blog/form',$(window).width(),$(window).height());
+            // layer.msg('打开添加窗口');
         }, 500);
     });
 
@@ -78,16 +123,56 @@
             layer.confirm('确定删除？', {
                 btn: ['确定', '取消'] //按钮
             }, function () {
-                layer.msg('删除Id为【' + id + '】的数据');
+                del(id);
+                // layer.msg('删除Id为【' + id + '】的数据');
             }, function () {
 
             });
         },
         editData: function (id) {
-            layer.msg('编辑Id为【' + id + '】的数据');
+            common.frame_show('文章编辑','/blog/form?id='+id,$(window).width(),$(window).height());
+            // layer.msg('编辑Id为【' + id + '】的数据');
         }
     };
 
+    function del(id) {
+        $.ajax({
+            method:"DELETE",
+            dataType:"JSON",
+            url:"/blog/"+id+"/del",
+            success:function (ret) {
+                if (ret.isOk) {
+                    layer.msg("操作成功", {time: 2000}, function () {
+                        layer.close(index);
+                        window.location.href = "/blog/index";
+                    });
+                } else {
+                    layer.msg(ret.msg, {time: 2000});
+                }
+            }
+        })
+    }
+    //上传文件设置
+    layui.upload({
+        url: '/php/upload.php',
+        before: function(input) {
+            box = $(input).parent('form').parent('div').parent('.layui-input-block');
+            if (box.next('div').length > 0) {
+                box.next('div').html('<div class="imgbox"><p>上传中...</p></div>');
+            } else {
+                box.after('<div class="layui-input-block"><div class="imgbox"><p>上传中...</p></div></div>');
+            }
+        },
+        success: function(res) {
+            if (res.status == 200) {
+                box.next('div').find('div.imgbox').html('<img src="' + res.url + '" alt="..." class="img-thumbnail">');
+                box.find('input[type=hidden]').val(res.url);
+                form.check(box.find('input[type=hidden]'));
+            } else {
+                box.next('div').find('p').html('上传失败...')
+            }
+        }
+    });
 
     exports('blog/index', datalist);
 });

@@ -3,17 +3,16 @@ package com.jcohy.controller.admin;
 import com.jcohy.common.JsonResult;
 import com.jcohy.common.PageJson;
 import com.jcohy.controller.BaseController;
-import com.jcohy.exception.ServiceException;
 import com.jcohy.model.Blog;
+import com.jcohy.model.Category;
+import com.jcohy.model.Tag;
 import com.jcohy.service.BlogService;
+import com.jcohy.service.CategoryService;
+import com.jcohy.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,6 +31,12 @@ public class AdminBlogController extends BaseController{
     @Autowired
     private BlogService blogService;
 
+    @Autowired
+    private CategoryService categoryService;
+
+    @Autowired
+    private TagService tagService;
+
     @GetMapping("/list")
     @ResponseBody
     public PageJson<Blog> all(ModelMap map){
@@ -44,11 +49,44 @@ public class AdminBlogController extends BaseController{
         return page;
     }
 
+    @DeleteMapping("/{id}/del")
+    @ResponseBody
+    public JsonResult delete(@PathVariable("id")Long id){
+        try {
+            blogService.delete(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return JsonResult.fail(e.getMessage());
+        }
+        return JsonResult.ok();
+    }
 
     @GetMapping("/form")
-    private String form(){
+    public String form(@RequestParam(required = false) Long id, ModelMap map){
+        List<Category> categories = categoryService.findAll();
+        List<Tag> tags = tagService.findAll();
+        map.put("categories",categories);
+        map.put("tags",tags);
+        if(id != null){
+            Blog blog = blogService.findById(id);
+            map.put("blog",blog);
+        }
+        return "admin/blog/form";
+    }
 
-        return null;
+
+    @GetMapping("{id}/change")
+    @ResponseBody
+    public JsonResult change(@PathVariable("id") Long id,String type){
+        try {
+            blogService.change(id,type);
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            return JsonResult.fail(e.getMessage());
+        }
+        return JsonResult.ok();
     }
 
 }

@@ -47,4 +47,12 @@ public interface BlogService {
          * @param id
          */
         void delete(Long id);
+
+
+        /**
+         * 改变状态。
+         * @param id
+         * @param type
+         */
+        void change(Long id,String type);
 }
