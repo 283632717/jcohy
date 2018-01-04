@@ -2,6 +2,8 @@ package com.jcohy.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 
 /**
@@ -47,16 +49,38 @@ public class Blog extends AbstractModel implements Serializable {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    @ManyToOne
+    @JoinColumn(name = "type_id")
+    private Type type;
+
+    @Column(name = "url")
+    private String url;
+
+
     @Column(length = 500)
     private String summary;
 
-    private String tags;
+    @ManyToMany
+    @JoinTable(name = "blog_tags",joinColumns=@JoinColumn(name="blogID"),inverseJoinColumns=@JoinColumn(name="tagID"))
+    private Set<Tag> tags = new HashSet<Tag>();
 
     private String title;
 
     @Column(nullable = false, columnDefinition = "int default 0")
     private Integer views;
 
+
+    @Column(name = "commentNum")
+    private Integer commentNum;
+
+    @Column(name = "heartNum")
+    private Integer heartNum;
+
+    @Column(name = "readNum")
+    private Integer readNum;
+
+    @Column(name = "coverURL")
+    private String coverURL;
 
     public Integer getIsRecommend() {
         return isRecommend;
@@ -122,11 +146,27 @@ public class Blog extends AbstractModel implements Serializable {
         this.summary = summary;
     }
 
-    public String getTags() {
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public Set<Tag> getTags() {
         return tags;
     }
 
-    public void setTags(String tags) {
+    public void setTags(Set<Tag> tags) {
         this.tags = tags;
     }
 
@@ -146,6 +186,38 @@ public class Blog extends AbstractModel implements Serializable {
         this.views = views;
     }
 
+    public Integer getCommentNum() {
+        return commentNum;
+    }
+
+    public void setCommentNum(Integer commentNum) {
+        this.commentNum = commentNum;
+    }
+
+    public Integer getHeartNum() {
+        return heartNum;
+    }
+
+    public void setHeartNum(Integer heartNum) {
+        this.heartNum = heartNum;
+    }
+
+    public Integer getReadNum() {
+        return readNum;
+    }
+
+    public void setReadNum(Integer readNum) {
+        this.readNum = readNum;
+    }
+
+    public String getCoverURL() {
+        return coverURL;
+    }
+
+    public void setCoverURL(String coverURL) {
+        this.coverURL = coverURL;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Blog{");
@@ -160,6 +232,10 @@ public class Blog extends AbstractModel implements Serializable {
         sb.append(", tags='").append(tags).append('\'');
         sb.append(", title='").append(title).append('\'');
         sb.append(", views=").append(views);
+        sb.append(", commentNum=").append(commentNum);
+        sb.append(", heartNum=").append(heartNum);
+        sb.append(", readNum=").append(readNum);
+        sb.append(", coverURL='").append(coverURL).append('\'');
         sb.append('}');
         return sb.toString();
     }

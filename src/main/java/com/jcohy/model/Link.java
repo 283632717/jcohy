@@ -17,19 +17,18 @@ public class Link extends AbstractModel implements Serializable {
 
     private static final long serialVersionUID = 1744219853139483256L;
 
-
     private String title;
 
     @Column(length = 500)
     private String url;
 
+    @Column(name = "description")
     private String description;
 
-    @Column(name = "category")
-    private String category;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "menu_id")
+    private Menu menu;
 
-    @Column(name = "type")
-    private String type;
     /**
      * 0 可见 1 隐藏
      */
@@ -38,6 +37,10 @@ public class Link extends AbstractModel implements Serializable {
 
     @Column(name = "email")
     private String email;
+
+    @Column(name = "logo")
+    private String logo;
+
 
     public String getEmail() {
         return email;
@@ -79,4 +82,19 @@ public class Link extends AbstractModel implements Serializable {
         this.status = status;
     }
 
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
 }

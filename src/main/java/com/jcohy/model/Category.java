@@ -27,6 +27,28 @@ public class Category extends AbstractModel implements Serializable {
     @Column(nullable = false, columnDefinition = "int default 0")
     private Integer count;
 
+    @ManyToOne
+    @JoinColumn(name = "typeID" ,columnDefinition = "int default 1")
+    private Type type;
+
+    @Column(name = "keywords")
+    private String keywords;
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public String getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(String keywords) {
+        this.keywords = keywords;
+    }
 
     public String getName() {
         return name;

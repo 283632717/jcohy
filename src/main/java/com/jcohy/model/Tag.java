@@ -2,6 +2,8 @@ package com.jcohy.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 
 /**
@@ -34,6 +36,9 @@ public class Tag extends AbstractModel implements Serializable{
 	@Column(nullable = false,columnDefinition="int default 0")
 	private Integer count;
 
+	@ManyToMany(mappedBy="tags")
+	private Set<Blog> blogs = new HashSet<Blog>();
+
 	public String getName() {
 		return name;
 	}
@@ -58,4 +63,11 @@ public class Tag extends AbstractModel implements Serializable{
 		this.count = count;
 	}
 
+	public Set<Blog> getBlogs() {
+		return blogs;
+	}
+
+	public void setBlogs(Set<Blog> blogs) {
+		this.blogs = blogs;
+	}
 }
