@@ -35,7 +35,7 @@ public class JcohyApplication extends WebMvcConfigurerAdapter{
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		//倒计时主页
-		registry.addViewController("/").setViewName("home");
+		registry.addViewController("/").setViewName("index");
 		//登录主页
 		registry.addViewController("/admin").setViewName("redirect:/login");
 		//前台首页
