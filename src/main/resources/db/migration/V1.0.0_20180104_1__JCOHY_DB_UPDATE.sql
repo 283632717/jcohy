@@ -89,6 +89,6 @@ ALTER table `blog` ADD  `commentNum` int(11) NOT NULL DEFAULT '0' COMMENT '评�
 ALTER table `blog` ADD  `heartNum` int(11) NOT NULL DEFAULT '0' COMMENT '点赞数';
 ALTER table `blog` ADD  `readNum` int(11) NOT NULL DEFAULT '0' COMMENT '阅读数';
 ALTER table `blog` ADD  `coverURL` varchar(255) DEFAULT NULL COMMENT '封面图片';
-ALTER table `blog` ADD  `type_id` int(11) NOT NULL DEFAULT '0' COMMENT '博文类型，0表示普通博文，1表示富博文(带封面图片)';
-ALTER table `blog` ADD  `publishTime` DATE NOT NULL COMMENT '文章发布时间';
+ALTER table `blog` ADD  `type_id` int(11) NOT NULL DEFAULT '1' COMMENT '博文类型，0表示普通博文，1表示富博文(带封面图片)';
+ALTER table `blog` ADD  `publishTime` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '文章发布时间';
 ALTER table `blog` ADD  `url` VARCHAR (255) NOT NULL DEFAULT '0';

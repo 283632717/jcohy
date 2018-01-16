@@ -30,8 +30,8 @@ public class Blog extends AbstractModel implements Serializable {
     @Column(name = "istop")
     private Integer isTop;
 
-    @Column(name = "isrecomment")
-    private Integer isRecommend;
+    @Column(name = "iscomment")
+    private Integer isCommend;
 
 
     /**
@@ -70,24 +70,24 @@ public class Blog extends AbstractModel implements Serializable {
     private Integer views;
 
 
-    @Column(name = "commentNum")
+    @Column(name = "comment_num")
     private Integer commentNum;
 
-    @Column(name = "heartNum")
+    @Column(name = "heart_num")
     private Integer heartNum;
 
-    @Column(name = "readNum")
+    @Column(name = "read_num")
     private Integer readNum;
 
     @Column(name = "coverURL")
     private String coverURL;
 
-    public Integer getIsRecommend() {
-        return isRecommend;
+    public Integer getIsCommend() {
+        return isCommend;
     }
 
-    public void setIsRecommend(Integer isRecommend) {
-        this.isRecommend = isRecommend;
+    public void setIsCommend(Integer isCommend) {
+        this.isCommend = isCommend;
     }
 
     public User getAuthor() {
@@ -224,7 +224,7 @@ public class Blog extends AbstractModel implements Serializable {
         sb.append("author=").append(author);
         sb.append(", content='").append(content).append('\'');
         sb.append(", isTop=").append(isTop);
-        sb.append(", isRecommend=").append(isRecommend);
+        sb.append(", isCommend=").append(isCommend);
         sb.append(", privacy=").append(privacy);
         sb.append(", status=").append(status);
         sb.append(", category=").append(category);

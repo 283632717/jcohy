@@ -97,7 +97,6 @@ layui.define(['laypage', 'layer',  'table','common'], function (exports) {
             });
         });
     }
-
-
+    
     exports('category/index', datalist);
 });

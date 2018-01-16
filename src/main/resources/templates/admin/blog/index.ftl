@@ -88,10 +88,10 @@
                             <input type="checkbox" name="isTop" title="置顶" value="{{d.id}}" lay-filter="isTop" />
                             {{#  } }}
 
-                            {{#  if(d.isRecommend == 0){ }}
-                            <input type="checkbox" name="isRecommend" title="推荐" value="{{d.id}}" lay-filter="isRecommend" checked />
+                            {{#  if(d.isCommend == 0){ }}
+                            <input type="checkbox" name="isCommend" title="推荐" value="{{d.id}}" lay-filter="isCommend" checked />
                             {{#  } else { }}
-                            <input type="checkbox" name="isRecommend" title="推荐" value="{{d.id}}" lay-filter="isRecommend" />
+                            <input type="checkbox" name="isCommend" title="推荐" value="{{d.id}}" lay-filter="isCommend" />
                             {{#  } }}
 
                             {{#  if(d.privacy == 0){ }}

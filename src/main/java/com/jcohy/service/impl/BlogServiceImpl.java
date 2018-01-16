@@ -57,7 +57,7 @@ public class BlogServiceImpl implements BlogService {
                 blog.setIsTop(blog.getIsTop() == 0 ? 1 : 0);
                 break;
             case "isRecommend":
-                blog.setIsRecommend(blog.getIsRecommend() == 0 ? 1:0);
+                blog.setIsCommend(blog.getIsCommend() == 0 ? 1:0);
                 break;
             case "privacy":
                 blog.setPrivacy(blog.getPrivacy() == 0 ? 1:0);
