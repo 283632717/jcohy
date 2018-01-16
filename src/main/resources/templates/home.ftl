@@ -15,6 +15,21 @@
 	    <style type="text/css">
             .STYLE1 {color: #666666}
         </style>
+
+    <#--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+    <#--<script> -->
+        <#--(adsbygoogle = window.adsbygoogle || []).push({ -->
+            <#--google_ad_client: "ca-pub-9126125536332163", -->
+            <#--enable_page_level_ads: true }); -->
+    <#--</script>-->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+           google_ad_client:"ca-pub-9126125536332163",
+           enable_page_level_ads:true
+        });
+    </script>
+
 </head>
     <body>
 			<audio autoplay="autopaly">

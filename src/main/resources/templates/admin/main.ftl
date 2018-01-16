@@ -60,7 +60,7 @@
                     <li class="layui-nav-item">
                         <a href="javascript:;"><i class="fa fa-user"></i>用户管理</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;">全部用户</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/user/index" data-id="11">全部用户</a></dd>
                             <dd><a href="javascript:;">黑名单管理</a></dd>
                         </dl>
                     </li>
