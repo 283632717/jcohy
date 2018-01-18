@@ -1,7 +1,8 @@
-layui.define(['laypage', 'layer',  'table','common','form'], function (exports) {
+layui.define(['laypage', 'layer',  'table','common','form','util'], function (exports) {
     var $ = layui.jquery,
         layer = layui.layer,
         form = layui.form,
+        util = layui.util,
         laypage = layui.laypage,
         common = layui.common,
         table  = layui.table ;
@@ -19,7 +20,7 @@ layui.define(['laypage', 'layer',  'table','common','form'], function (exports) 
             ,{field: 'email', align:'center', title: '站长邮箱',unresize:true}
             ,{field: 'description', align:'center', title: '描述',unresize:true}
             ,{field:'status', title: '状态', templet: '#titleTpl'}
-            ,{field: 'createDate', title: '创建日期',unresize:true}
+            ,{field: 'createDate', title: '创建日期',unresize:true,templet: '<div>{{# if(d.createDate!=null){ }}{{ layui.util.toDateString(d.createDate) }}{{# } }}</div>'}
             ,{fixed: 'right',  align:'center', toolbar: '#operator',unresize:true}
         ]]
     });

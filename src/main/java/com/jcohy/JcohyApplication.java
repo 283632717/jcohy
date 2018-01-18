@@ -39,7 +39,7 @@ public class JcohyApplication extends WebMvcConfigurerAdapter{
 		//登录主页
 		registry.addViewController("/admin").setViewName("redirect:/login");
 		//前台首页
-		registry.addViewController("/index").setViewName("index");
+		registry.addViewController("/index").setViewName("front/home");
 		//后台主页
 		registry.addViewController("/admin/index").setViewName("admin/main");
 		//博客管理主页

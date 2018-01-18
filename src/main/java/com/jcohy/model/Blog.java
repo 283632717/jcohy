@@ -60,14 +60,19 @@ public class Blog extends AbstractModel implements Serializable {
     @Column(length = 500)
     private String summary;
 
-    @ManyToMany
-    @JoinTable(name = "blog_tags",joinColumns=@JoinColumn(name="blogID"),inverseJoinColumns=@JoinColumn(name="tagID"))
-    private Set<Tag> tags = new HashSet<Tag>();
+    @Column(name = "tags")
+    private String tags;
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
 
     private String title;
 
-    @Column(nullable = false, columnDefinition = "int default 0")
-    private Integer views;
 
 
     @Column(name = "comment_num")
@@ -162,28 +167,12 @@ public class Blog extends AbstractModel implements Serializable {
         this.url = url;
     }
 
-    public Set<Tag> getTags() {
-        return tags;
-    }
-
-    public void setTags(Set<Tag> tags) {
-        this.tags = tags;
-    }
-
     public String getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public Integer getViews() {
-        return views;
-    }
-
-    public void setViews(Integer views) {
-        this.views = views;
     }
 
     public Integer getCommentNum() {
@@ -231,7 +220,6 @@ public class Blog extends AbstractModel implements Serializable {
         sb.append(", summary='").append(summary).append('\'');
         sb.append(", tags='").append(tags).append('\'');
         sb.append(", title='").append(title).append('\'');
-        sb.append(", views=").append(views);
         sb.append(", commentNum=").append(commentNum);
         sb.append(", heartNum=").append(heartNum);
         sb.append(", readNum=").append(readNum);

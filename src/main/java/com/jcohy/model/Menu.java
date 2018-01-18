@@ -19,7 +19,7 @@ public class Menu extends AbstractModel{
     @Column(name = "name")
     private String name;
 
-    @Column(name = "parentId")
+    @Column(name = "parent_code")
     private Integer parentId;
 
     @Column(name = "content")

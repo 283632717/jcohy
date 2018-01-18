@@ -1,6 +1,7 @@
-layui.define(['laypage', 'layer',  'table','common'], function (exports) {
+layui.define(['laypage', 'layer',  'table','common','util'], function (exports) {
     var $ = layui.jquery,
         layer = layui.layer,
+        util = layui.util,
         laypage = layui.laypage,
         common = layui.common,
         table  = layui.table ;
@@ -16,7 +17,7 @@ layui.define(['laypage', 'layer',  'table','common'], function (exports) {
             ,{field: 'name', align:'center', title: '名称',unresize:true}
             ,{field: 'count', align:'center', title: '数量',sort: true,unresize:true}
             ,{field: 'status', align:'center', title: '状态',unresize:true}
-            ,{field: 'createDate', title: '创建日期',unresize:true}
+            ,{field: 'createDate', title: '创建日期',unresize:true,templet: '<div>{{# if(d.createDate!=null){ }}{{ layui.util.toDateString(d.createDate) }}{{# } }}</div>'}
             ,{fixed: 'right',  align:'center', toolbar: '#operator',unresize:true}
         ]]
     });

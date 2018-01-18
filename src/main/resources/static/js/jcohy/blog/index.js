@@ -1,7 +1,8 @@
-﻿﻿layui.define(['laypage', 'layer', 'table','form', 'pagesize','laytpl','common'], function (exports) {
+﻿﻿layui.define(['laypage', 'layer', 'table','form', 'pagesize','laytpl','common','util'], function (exports) {
     var $ = layui.jquery,
         layer = layui.layer,
         form = layui.form,
+        util = layui.util,
         laytpl = layui.laytpl,
         table = layui.table,
         common = layui.common,
@@ -21,7 +22,7 @@
             ,{field: 'author', align:'center', title: '作者',unresize:true,templet: '<div>{{d.author.name}}</div>'}
             ,{field: 'category', align:'center', title: '分类',unresize:true,templet: '<div>{{d.category.name}}</div>'}
             ,{field: 'tags', align:'center', title: '标签',unresize:true}
-            ,{field: 'createDate', title: '创建日期',unresize:true}
+            ,{field: 'createDate', title: '创建日期',unresize:true,templet: '<div>{{# if(d.createDate!=null){ }}{{ layui.util.toDateString(d.createDate) }}{{# } }}</div>'}
             ,{title: '选项',templet: '#choicesTpl',unresize:true}
             ,{fixed: 'right',  title:'操作',align:'center', toolbar: '#operator',unresize:true}
         ]]
