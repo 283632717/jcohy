@@ -15,16 +15,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface BlogRepository extends JpaRepository<Blog,Long> {
 
     /**
-     * 获取推荐博客列表
+     * 获取分享博客列表
      *
-     * @param commentNum
      *            推荐状态
      * @param privacy
      *            权限
      * @param pageable
      * @return
      */
-    Page<Blog> findByCommentNumAndPrivacyOrderByCreateDateDesc(int commentNum, int privacy, Pageable pageable);
+    Page<Blog> findByPrivacyOrderByShareNumDesc(int privacy, Pageable pageable);
 
 
     /**

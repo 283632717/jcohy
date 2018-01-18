@@ -2,8 +2,6 @@ package com.jcohy.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 
 /**
@@ -75,8 +73,8 @@ public class Blog extends AbstractModel implements Serializable {
 
 
 
-    @Column(name = "comment_num")
-    private Integer commentNum;
+    @Column(name = "share_num")
+    private Integer shareNum;
 
     @Column(name = "heart_num")
     private Integer heartNum;
@@ -175,12 +173,12 @@ public class Blog extends AbstractModel implements Serializable {
         this.title = title;
     }
 
-    public Integer getCommentNum() {
-        return commentNum;
+    public Integer getShareNum() {
+        return shareNum;
     }
 
-    public void setCommentNum(Integer commentNum) {
-        this.commentNum = commentNum;
+    public void setShareNum(Integer shareNum) {
+        this.shareNum = shareNum;
     }
 
     public Integer getHeartNum() {
@@ -220,7 +218,7 @@ public class Blog extends AbstractModel implements Serializable {
         sb.append(", summary='").append(summary).append('\'');
         sb.append(", tags='").append(tags).append('\'');
         sb.append(", title='").append(title).append('\'');
-        sb.append(", commentNum=").append(commentNum);
+        sb.append(", share_num=").append(shareNum);
         sb.append(", heartNum=").append(heartNum);
         sb.append(", readNum=").append(readNum);
         sb.append(", coverURL='").append(coverURL).append('\'');

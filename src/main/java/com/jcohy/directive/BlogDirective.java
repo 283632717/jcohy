@@ -35,7 +35,7 @@ public class BlogDirective implements TemplateDirectiveModel {
                 list = blogService.findHotN(5);
             }
 
-            if("commentNum".equalsIgnoreCase(type)){
+            if("shareNum".equalsIgnoreCase(type)){
                 list = blogService.findFeaturedN(5);
             }
 
