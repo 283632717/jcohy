@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,6 +25,17 @@ public class TagServiceImpl implements TagService {
 
     @Autowired
     private TagRepository tagRepository;
+
+    @Override
+    public List<String> findAllNameList() {
+        List<String> result = new ArrayList<String>();
+        List<Tag> list = tagRepository.findAllByStatus(0);
+        for (Tag tag : list) {
+            result.add(tag.getName());
+        }
+        return result;
+    }
+
     @Override
     public List<Tag> findAll() {
         return tagRepository.findAll();
@@ -66,5 +78,15 @@ public class TagServiceImpl implements TagService {
     @Override
     public void delete(Long id) {
         tagRepository.delete(id);
+    }
+
+    @Override
+    public void changeStatus(Long id) {
+        if(id == null){
+            throw new ServiceException("ID不能为空");
+        }
+        Tag tag = findById(id);
+        tag.setStatus(tag.getStatus() == 0?1:0);
+        tagRepository.saveAndFlush(tag);
     }
 }

@@ -30,6 +30,11 @@ public class LinkServiceImpl implements LinkService {
     }
 
     @Override
+    public List<Link> findAllVisiable() {
+        return linkRepository.findAllByStatus(0);
+    }
+
+    @Override
     public Page<Link> findAll(Pageable Pageable) {
         return linkRepository.findAll(Pageable);
     }

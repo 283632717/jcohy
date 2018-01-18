@@ -13,12 +13,20 @@ import java.util.List;
  * Description  :
  */
 public interface LinkService {
+
+
     /**
      * 查询所有资源
      * @return
      */
     List<Link> findAll();
 
+    /**
+     * 查询所有可见
+     *
+     * @return
+     */
+    List<Link> findAllVisiable();
     /**
      * 分页查询
      * @param Pageable
@@ -38,7 +46,6 @@ public interface LinkService {
      * @param link
      */
     Link saveOrUpdate(Link link);
-
 
 
     /**

@@ -14,6 +14,22 @@ import java.util.List;
  * Description:
  **/
 public interface BlogService {
+
+        /**
+         * 获取浏览量Top N
+         * @param n
+         * @return
+         */
+        List<Blog> findHotN(int n);
+
+        /**
+         * 获取推荐Top N
+         * @param i
+         * @return
+         */
+        List<Blog> findFeaturedN(int i);
+
+
         /**
          * 查询所有资源
          * @return

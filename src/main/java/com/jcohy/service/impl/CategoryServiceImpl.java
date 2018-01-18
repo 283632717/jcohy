@@ -32,6 +32,11 @@ public class CategoryServiceImpl implements CategoryService {
     private BlogRepository blogRepository;
 
     @Override
+    public List<Category> findVisible() {
+        return categoryRepository.findByStatus(0);
+    }
+
+    @Override
     public List<Category> findAll() {
         return categoryRepository.findAll();
     }

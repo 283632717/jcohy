@@ -14,6 +14,13 @@ import java.util.List;
  */
 public interface TagService {
 
+
+    /**
+     * 查询所有标签的名称列表
+     * @return
+     */
+    List<String> findAllNameList();
+
     /**
      * 查询所有标签
      * @return
@@ -52,4 +59,10 @@ public interface TagService {
      * @param id
      */
     void delete(Long id);
+
+    /**
+     * 改变状态
+     * @param id
+     */
+    void changeStatus(Long id);
 }

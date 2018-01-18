@@ -15,6 +15,13 @@ import java.util.List;
 public interface CategoryService {
 
     /**
+     * 查询可见分类
+     * @return
+     */
+     List<Category> findVisible();
+
+
+    /**
      * 查询所有资源
      * @return
      */

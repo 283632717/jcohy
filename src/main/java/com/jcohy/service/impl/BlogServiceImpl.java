@@ -5,6 +5,7 @@ import com.jcohy.repository.BlogRepository;
 import com.jcohy.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,18 @@ public class BlogServiceImpl implements BlogService {
 
     @Autowired
     private BlogRepository blogRepository;
+
+    @Override
+    public List<Blog> findHotN(int n) {
+        Pageable pageable = new PageRequest(0,n);
+        return blogRepository.findByPrivacyOrderByReadNumDesc(0,pageable).getContent();
+    }
+
+    @Override
+    public List<Blog> findFeaturedN(int n) {
+        Pageable pageable = new PageRequest(0,n);
+        return blogRepository.findByCommentNumAndPrivacyOrderByCreateDateDesc(1,0,pageable).getContent();
+    }
 
     @Override
     public List<Blog> findAll() {
