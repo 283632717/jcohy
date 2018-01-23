@@ -2,9 +2,8 @@
 
 >  *  将代码clone下来后，用idea打开，或者直接在idea里面关联好git，直接下拉下来。</br>
 >  *  修改数据库配置，帐号密码。
->  *  如果是首次运行，先在数据库里面创建一个数据库jcohy。然后将application.yml里面的jpa.hibernate.ddl-auto = update改成create。
+>  *  如果是首次运行，先在数据库里面创建一个数据库jcohy。
 >  *  运行项目，程序会自动创建相关的表结构。
->  *  之后将jpa.hibernate.ddl-auto = create改为update。
 
 #### 提交说明
 
