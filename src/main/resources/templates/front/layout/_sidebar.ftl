@@ -21,7 +21,7 @@
     <ul class="fa-ul blog-module-ul">
 	<@blogList type="readNum">
 		<#list list as x>
-            <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">${x.title}</a></li>
+            <li><i class="fa-li fa fa-hand-o-right"></i><a href="${ctx!}/article/${x.id}">${x.title}</a></li>
 		</#list>
 	</@blogList>
     </ul>
@@ -69,7 +69,7 @@
 </div>
 
 <div class="blog-module shadow">
-    <div class="blog-module-title">热门资源</div>
+    <div class="blog-module-title">时光轴</div>
     <dl class="footprint">
     <@timeLineList>
         <#list list as x>
@@ -77,13 +77,6 @@
             <dd>${x.displayName}</dd>
         </#list>
     </@timeLineList>
-
-        <#--<dt>2017年03月10日</dt>-->
-        <#--<dd>Jcohy2.0基本功能完成，正式上线！</dd>-->
-        <#--<dt>2017年03月09日</dt>-->
-        <#--<dd>新增文章搜索功能！</dd>-->
-        <#--<dt>2017年02月25日</dt>-->
-        <#--<dd>QQ互联接入网站，可QQ登陆发表评论与留言！</dd>-->
     </dl>
 </div>
 
