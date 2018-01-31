@@ -46,6 +46,6 @@ layui.define(['element', 'layer', 'form','laydate'], function (exports) {
         return false;
     });
 
-    exports('form', {});
+    exports('notice/form', {});
 });
 

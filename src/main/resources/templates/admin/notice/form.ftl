@@ -31,7 +31,7 @@
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label">公告内容</label>
+        <label class="layui-form-label" style="width: 170px">公告内容</label>
         <div class="layui-input-inline">
             <input type="text" name="content" lay-verify="content" placeholder="请输入公告名称" value="${(notice.content)!}"
                    autocomplete="off" class="layui-input">
@@ -40,7 +40,7 @@
 
 
     <div class="layui-form-item">
-        <label class="layui-form-label">公告链接地址</label>
+        <label class="layui-form-label"  style="width: 170px">公告链接地址</label>
         <div class="layui-input-inline">
             <input type="text" name="url" lay-verify="url" placeholder="请输入公告名称" value="${(notice.url)!}"
                    autocomplete="off" class="layui-input">
@@ -49,22 +49,22 @@
 
 
     <div class="layui-form-item">
-        <label class="layui-form-label">开始时间</label>
+        <label class="layui-form-label"  style="width: 170px">开始时间</label>
         <div class="layui-input-inline">
-            <input type="text" class="layui-input" name="start" id="start" value="${(notice.start)!}">
+            <input type="text" class="layui-input" name="start" id="start" value="${(notice.start)!}" lay-verify="required">
         </div>
 
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label">结束时间</label>
+        <label class="layui-form-label"  style="width: 170px">结束时间</label>
         <div class="layui-input-inline">
-            <input type="text" class="layui-input" name="end" id="end" value="${(notice.end)!}">
+            <input type="text" class="layui-input" name="end" id="end" value="${(notice.end)!}" lay-verify="required">
         </div>
     </div>
     <#if notice.id == null>
         <div class="layui-form-item">
-            <label class="layui-form-label">是否可见</label>
+            <label class="layui-form-label"  style="width: 170px">是否可见</label>
             <div class="layui-input-block">
                 <input type="checkbox" name="visible" lay-skin="switch" lay-text="ON|OFF" value="1" checked>
             </div>

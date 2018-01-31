@@ -25,8 +25,8 @@ public class Menu extends AbstractModel{
     @Column(name = "content")
     private String content;
 
-    @OneToMany(mappedBy = "menu", fetch = FetchType.EAGER)
-    private Set<Link> links;
+//    @OneToMany(mappedBy = "menu", cascade=CascadeType.ALL)
+//    private Set<Link> links;
 
     @Column(name = "visible")
     private Integer visible;
@@ -50,13 +50,13 @@ public class Menu extends AbstractModel{
         this.visible = visible;
     }
 
-    public Set<Link> getLinks() {
-        return links;
-    }
-
-    public void setLinks(Set<Link> links) {
-        this.links = links;
-    }
+//    public Set<Link> getLinks() {
+//        return links;
+//    }
+//
+//    public void setLinks(Set<Link> links) {
+//        this.links = links;
+//    }
 
     public Integer getCode() {
         return code;

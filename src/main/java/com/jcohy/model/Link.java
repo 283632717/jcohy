@@ -25,7 +25,7 @@ public class Link extends AbstractModel implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "menu_id")
     private Menu menu;
 

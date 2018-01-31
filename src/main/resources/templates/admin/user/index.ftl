@@ -75,7 +75,7 @@
 <script type="text/javascript">
     layui.config({
         base: '${ctx}/js/jcohy/'
-    }).use('link/index');
+    }).use('user/index');
 </script>
 </body>
 </html>
