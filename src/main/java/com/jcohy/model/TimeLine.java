@@ -16,11 +16,11 @@ import java.util.Date;
 @Table(name = "timeline")
 public class TimeLine extends AbstractModel{
 
-    @Column(name = "displayName")
+    @Column(name = "display_name")
     private String displayName;
 
-    @Column(name = "displayDate")
-    private Date displayDate;
+    @Column(name = "display_date")
+    private String displayDate;
 
     public String getDisplayName() {
         return displayName;
@@ -30,11 +30,11 @@ public class TimeLine extends AbstractModel{
         this.displayName = displayName;
     }
 
-    public Date getDisplayDate() {
+    public String getDisplayDate() {
         return displayDate;
     }
 
-    public void setDisplayDate(Date displayDate) {
+    public void setDisplayDate(String displayDate) {
         this.displayDate = displayDate;
     }
 }

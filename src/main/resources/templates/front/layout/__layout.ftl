@@ -49,7 +49,7 @@
         </a>
     </div>
 </nav>
-<!-- 主体（一般只改变这里的内容） -->
+<!-- 主体 -->
 <div class="blog-body">
     <!-- canvas -->
     <canvas id="canvas-banner" style="background: #393D49;"></canvas>

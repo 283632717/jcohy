@@ -1,6 +1,7 @@
 package com.jcohy.config;
 
 import com.jcohy.directive.*;
+import com.jcohy.model.TimeLine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
@@ -24,7 +25,8 @@ public class FreeMarkerConfig {
     private NoticeDirective noticeDirective;
     @Autowired
     private MenuDirective menuDirective;
-
+    @Autowired
+    private TimeLineDirective timeLineDirective;
     @PostConstruct
     public void setSharedVariable() {
     	try {
@@ -34,6 +36,7 @@ public class FreeMarkerConfig {
 			configuration.setSharedVariable("linkList", linkDirective);
 			configuration.setSharedVariable("noticeList",noticeDirective);
             configuration.setSharedVariable("menuList",menuDirective);
+            configuration.setSharedVariable("timeLineList",timeLineDirective);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
