@@ -2,7 +2,7 @@
 <#--<!-- 侧边栏结束&ndash;&gt;-->
 <div class="blogerinfo shadow">
     <div class="blogerinfo-figure">
-        <img src="../images/Absolutely.jpg" alt="Absolutely" />
+        <img src="${ctx!}/images/ico/jcohy.png" alt="Jcohy" title="Jcohy" style="width: 100px;height: 100px;border-radius: 50px"/>
     </div>
     <p class="blogerinfo-nickname">Jcohy</p>
     <p class="blogerinfo-introduce">一枚90后程序员，Java开发工程师</p>
@@ -32,7 +32,9 @@
     <ul class="fa-ul blog-module-ul">
 	<@blogList type="shareNum">
 		<#list list as x>
-            <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">${x.title}</a></li>
+            <li><i class="fa-li fa fa-hand-o-right"></i><a href="${ctx!}/article/${x.id}">${x.title}</a>
+                <#--<span></span>-->
+            </li>
 		</#list>
 	</@blogList>
     </ul>
@@ -50,10 +52,17 @@
 
 <div class="blog-module shadow">
     <div class="blog-module-title">标签分类</div>
-    <ul class="fa-ul blog-module-ul">
+    <ul class="blogroll">
 	<@tagList>
 		<#list list as x>
-            <li><a href="${x.url}" target="_blank">${x.name}</a></li>
+            <#if x.id%3 ==1>
+                <li><a href="${x.url}" target="_blank"><span class="layui-badge layui-bg-green">${x.name}</span></a></li>
+
+            <#elseif x.id%3==2>
+                <li><a href="${x.url}" target="_blank"><span class="layui-badge layui-bg-orange">${x.name}</span></a></li>
+            <#else >
+                <li><a href="${x.url}" target="_blank"><span class="layui-badge layui-bg-blue">${x.name}</span></a></li>
+            </#if >
 		</#list>
 	</@tagList>
     </ul>
