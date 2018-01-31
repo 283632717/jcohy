@@ -28,6 +28,17 @@ public class Menu extends AbstractModel{
     @OneToMany(mappedBy = "menu", fetch = FetchType.EAGER)
     private Set<Link> links;
 
+    @Column(name = "visible")
+    private Integer visible;
+
+    public Integer getVisible() {
+        return visible;
+    }
+
+    public void setVisible(Integer visible) {
+        this.visible = visible;
+    }
+
     public Set<Link> getLinks() {
         return links;
     }
