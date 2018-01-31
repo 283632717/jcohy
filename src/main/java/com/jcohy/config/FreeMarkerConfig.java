@@ -1,9 +1,6 @@
 package com.jcohy.config;
 
-import com.jcohy.directive.BlogDirective;
-import com.jcohy.directive.CategoryDirective;
-import com.jcohy.directive.LinkDirective;
-import com.jcohy.directive.TagDirective;
+import com.jcohy.directive.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
@@ -23,7 +20,10 @@ public class FreeMarkerConfig {
     private TagDirective tagDirective;
     @Autowired
     private LinkDirective linkDirective;
-    
+    @Autowired
+    private NoticeDirective noticeDirective;
+    @Autowired
+    private MenuDirective menuDirective;
     @PostConstruct
     public void setSharedVariable() {
     	try {
@@ -31,6 +31,8 @@ public class FreeMarkerConfig {
 			configuration.setSharedVariable("blogList", blogDirective);
 			configuration.setSharedVariable("tagList", tagDirective);
 			configuration.setSharedVariable("linkList", linkDirective);
+			configuration.setSharedVariable("noticeList",noticeDirective);
+            configuration.setSharedVariable("menuList",menuDirective);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
