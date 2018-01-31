@@ -16,4 +16,3 @@ INSERT INTO `notice` VALUES ('2', '网站新开张了','http://www.jcohy.com', '
 INSERT INTO `menu` VALUES ('5', '2', '文章专栏', '2', '文章专栏','article/index','0', '2017-12-29 11:42:40', '2017-12-29 11:42:42');
 INSERT INTO `menu` VALUES ('6', '3', '资源分享', '3', '资源分享','resource/index','0', '2017-12-29 11:42:40', '2017-12-29 11:42:42');
 INSERT INTO `menu` VALUES ('7', '4', '点点滴滴', '4', '点点滴滴','timeline/index','0', '2017-12-29 11:42:40', '2017-12-29 11:42:42');
-INSERT INTO `menu` VALUES ('8', '5', '关于本站', '5', '关于本站','website/index','0', '2017-12-29 11:42:40', '2017-12-29 11:42:42');

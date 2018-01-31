@@ -250,8 +250,8 @@ CREATE TABLE `type` (
 DROP TABLE IF EXISTS `timeline`;
 CREATE TABLE `timeline` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `displayName` varchar(30) NOT NULL COMMENT '显示名称|jiac|201180117',
-  `displayDate` datetime DEFAULT NULL COMMENT '显示日期|jiac|201180117',
+  `display_name` varchar(50) NOT NULL COMMENT '显示名称|jiac|201180117',
+  `display_date` varchar(50) NOT NULL COMMENT '显示日期|jiac|201180117',
   `create_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
