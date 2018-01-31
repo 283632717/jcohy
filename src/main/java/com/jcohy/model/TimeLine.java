@@ -1,5 +1,7 @@
 package com.jcohy.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -20,6 +22,7 @@ public class TimeLine extends AbstractModel{
     private String displayName;
 
     @Column(name = "display_date")
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private String displayDate;
 
     public String getDisplayName() {

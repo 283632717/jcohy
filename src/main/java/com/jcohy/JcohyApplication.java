@@ -54,6 +54,8 @@ public class JcohyApplication extends WebMvcConfigurerAdapter{
 		registry.addViewController("/link/index").setViewName("admin/link/index");
 		//系统设置
 		registry.addViewController("/sys/index").setViewName("admin/sys/index");
+		//公告首页
+		registry.addViewController("/notice/index").setViewName("admin/notice/index");
         //文件上传
         registry.addViewController("/upload/index").setViewName("front/upload");
         //添加用户模块

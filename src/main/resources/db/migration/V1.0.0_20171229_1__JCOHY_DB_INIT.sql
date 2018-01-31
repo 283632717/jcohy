@@ -38,8 +38,8 @@ CREATE TABLE `blog` (
   `type_id` int(11) NOT NULL DEFAULT '1' COMMENT '博文类型，0表示普通博文，1表示富博文(带封面图片)',
   `author_id` bigint(20) DEFAULT NULL COMMENT '作者|jiac|201180117',
   `category_id` bigint(20) DEFAULT NULL COMMENT '分类|jiac|201180117',
-  `create_date` timestamp NULL DEFAULT NULL,
-  `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `create_date` timestamp NOT NULL  ON UPDATE CURRENT_TIMESTAMP,
+  `update_date` timestamp NOT NULL  ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `author_id` (`author_id`),
   KEY `category_id` (`category_id`),
@@ -62,8 +62,8 @@ CREATE TABLE `category` (
   `typeID` bigint(20) DEFAULT '1' COMMENT '类型|jiac|201180117',
   `keywords` varchar(50) DEFAULT '' COMMENT '关键字|jiac|201180117',
   `status` int(11) NOT NULL DEFAULT '0' COMMENT '状态，可见或者不可见|jiac|201180117',
-  `create_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `create_date` timestamp NOT NULL  ON UPDATE CURRENT_TIMESTAMP,
+  `update_date` timestamp NOT NULL  ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8  COMMENT='分类表|jiac|20180117';
 
@@ -82,8 +82,8 @@ CREATE TABLE `link` (
   `status` int(11) NOT NULL DEFAULT '0' COMMENT '状态，可见或者不可见|jiac|201180117',
   `logo` VARCHAR(255) DEFAULT '' COMMENT 'logo|jiac|201180117',
   `menu_id` bigint(20) DEFAULT NULL,
-  `create_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `create_date` timestamp NOT NULL  ON UPDATE CURRENT_TIMESTAMP,
+  `update_date` timestamp NOT NULL  ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `fk` (`menu_id`),
   CONSTRAINT `fk` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id`)
@@ -99,8 +99,8 @@ CREATE TABLE `login_log` (
   `ip` varchar(255) DEFAULT NULL COMMENT 'ip|jiac|201180117',
   `login_at` datetime DEFAULT NULL COMMENT '登录时间|jiac|201180117',
   `user_id` bigint(20) DEFAULT NULL COMMENT 'user|jiac|201180117',
-  `create_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `create_date` timestamp NOT NULL  ON UPDATE CURRENT_TIMESTAMP,
+  `update_date` timestamp NOT NULL  ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `user_login_id` (`user_id`),
   CONSTRAINT `user_login_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
@@ -120,8 +120,8 @@ CREATE TABLE `menu` (
   `name` varchar(255) DEFAULT NULL COMMENT '名称|jiac|201180117',
   `parent_code` int(11) DEFAULT NULL COMMENT '父级编号|jiac|201180117',
   `content` longtext COMMENT '内容|jiac|201180117',
-  `create_date` timestamp NULL DEFAULT NULL,
-  `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `create_date` timestamp NOT NULL  ON UPDATE CURRENT_TIMESTAMP,
+  `update_date` timestamp NOT NULL  ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8  COMMENT='菜单表|jiac|20180117';
 
@@ -135,8 +135,8 @@ CREATE TABLE `options` (
   `option_key` varchar(255) DEFAULT NULL COMMENT 'key|jiac|201180117',
   `option_value` varchar(255) DEFAULT NULL COMMENT 'value|jiac|201180117',
   `description` varchar(255) DEFAULT NULL COMMENT 'description|jiac|201180117',
-  `create_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `create_date` timestamp NOT NULL  ON UPDATE CURRENT_TIMESTAMP,
+  `update_date` timestamp NOT NULL  ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='网站信息|jiac|20180117';
 
@@ -150,8 +150,8 @@ CREATE TABLE `session` (
   `expire_at` bigint(20) DEFAULT NULL COMMENT '失效时间|jiac|201180117',
   `session_id` varchar(255) DEFAULT NULL COMMENT 'sessionId|jiac|201180117',
   `user_id` bigint(20) DEFAULT NULL COMMENT '用户|jiac|201180117',
-  `create_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `create_date` timestamp NOT NULL  ON UPDATE CURRENT_TIMESTAMP,
+  `update_date` timestamp NOT NULL  ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `user_session_id` (`user_id`),
   CONSTRAINT `user_session_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
@@ -166,8 +166,8 @@ CREATE TABLE `tag` (
   `count` int(11) NOT NULL DEFAULT '0' COMMENT '博客数量|jiac|201180117',
   `name` varchar(255) DEFAULT NULL COMMENT '名称|jiac|201180117',
   `status` int(11) DEFAULT NULL COMMENT '状态|jiac|201180117',
-  `create_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `create_date` timestamp NOT NULL  ON UPDATE CURRENT_TIMESTAMP,
+  `update_date` timestamp NOT NULL  ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8  COMMENT='tags表|jiac|20180117';
 
@@ -186,8 +186,8 @@ CREATE TABLE `user` (
   `salt` varchar(255) DEFAULT NULL COMMENT 'description|jiac|201180117',
   `status` int(11) NOT NULL DEFAULT '0' COMMENT '状态|jiac|201180117',
   `name` varchar(255) DEFAULT NULL COMMENT '真实姓名|jiac|201180117',
-  `create_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `create_date` timestamp NOT NULL  ON UPDATE CURRENT_TIMESTAMP,
+  `update_date` timestamp NOT NULL  ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8  COMMENT='用户表|jiac|20180117';
@@ -203,8 +203,8 @@ CREATE TABLE `notice` (
   `start` datetime NOT NULL COMMENT '开始时间|jiac|201180117',
   `end` datetime NOT NULL COMMENT '结束时间|jiac|201180117',
   `visible` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0,不可见，1可见|jiac|201180117''',
-  `create_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `create_date` timestamp NOT NULL  ON UPDATE CURRENT_TIMESTAMP,
+  `update_date` timestamp NOT NULL  ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='公告|jiac|20180117';
 
@@ -225,8 +225,8 @@ CREATE TABLE `comment` (
   `headURL` varchar(100) DEFAULT NULL,
   `check` int(11) DEFAULT '0' COMMENT '是否审核，0表示未审核，1表示审核|jiac|201180117',
   `status` int(11) DEFAULT '1' COMMENT '是否合法，0未通过，1通过|jiac|201180117',
-  `create_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `create_date` timestamp NOT NULL  ON UPDATE CURRENT_TIMESTAMP,
+  `update_date` timestamp NOT NULL  ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='评论|jiac|20180117';
 
@@ -238,8 +238,8 @@ DROP TABLE IF EXISTS `type`;
 CREATE TABLE `type` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL COMMENT '分类名称|jiac|201180117',
-  `create_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `create_date` timestamp NOT NULL  ON UPDATE CURRENT_TIMESTAMP,
+  `update_date` timestamp NOT NULL  ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='type|jiac|20180117';
 
@@ -252,7 +252,7 @@ CREATE TABLE `timeline` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `display_name` varchar(50) NOT NULL COMMENT '显示名称|jiac|201180117',
   `display_date` varchar(50) NOT NULL COMMENT '显示日期|jiac|201180117',
-  `create_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `create_date` timestamp NOT NULL  ON UPDATE CURRENT_TIMESTAMP,
+  `update_date` timestamp NOT NULL  ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='type|jiac|20180117';

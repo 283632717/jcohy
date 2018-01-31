@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Jcohy后台管理系统</title>
-    <link rel="shortcut icon" href="${ctx!}/images/jcohy.png" type="image/x-icon">
+    <link rel="shortcut icon" href="${ctx!}/images/ico/jcohy.png" type="image/x-icon">
     <!-- layui.css -->
     <link href="${ctx!}/js/plugins/layui/css/layui.css" rel="stylesheet" />
     <!-- 本页样式 -->

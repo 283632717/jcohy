@@ -1,5 +1,7 @@
 package com.jcohy.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -32,7 +34,7 @@ public class LoginLog extends AbstractModel implements Serializable{
 	@OneToOne
 	@JoinColumn(name = "user_id")
 	private User user;
-
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date loginAt;
 
 	private String ip;

@@ -1,8 +1,9 @@
 package com.jcohy.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -20,9 +21,11 @@ public class Notice extends AbstractModel {
     private String content;
 
     @Column(name = "start")
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date start;
 
     @Column(name = "end")
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date end;
 
     @Column(name = "visible")
@@ -69,5 +72,17 @@ public class Notice extends AbstractModel {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Notice{");
+        sb.append("content='").append(content).append('\'');
+        sb.append(", start=").append(start);
+        sb.append(", end=").append(end);
+        sb.append(", visible=").append(visible);
+        sb.append(", url='").append(url).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }

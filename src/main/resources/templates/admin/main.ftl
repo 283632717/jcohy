@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Jcohy后台管理系统</title>
-    <link rel="shortcut icon" href="${ctx}/images/jcohy.png" type="image/x-icon">
+    <link rel="shortcut icon" href="${ctx}/images/ico/jcohy.png" type="image/x-icon">
     <!-- layui.css -->
     <link href="${ctx!}/js/plugins/layui/css/layui.css" rel="stylesheet" />
     <!-- font-awesome.css -->
@@ -20,7 +20,7 @@
         <div class="layui-header">
             <div class="ht-console">
                 <div class="ht-user">
-                    <img src="${ctx!}/images/jcohy.png" />
+                    <img src="${ctx!}/images/ico/jcohy.png" />
                     <a class="ht-user-name">超级管理员</a>
                 </div>
             </div>
@@ -69,7 +69,7 @@
                         <dl class="layui-nav-child">
                             <dd><a href="javascript:;" data-url="${ctx!}/link/index" data-id="8">友情链接</a></dd>
                             <dd><a href="javascript:;" data-url="${ctx!}/sys/index" data-id="9">系统设置</a></dd>
-                            <dd><a href="javascript:;" data-url="datalist.html" data-id="10">网站公告</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/notice/index" data-id="10">网站公告</a></dd>
                             <dd><a href="javascript:;" data-url="datalist.html" data-id="6">更新日志</a></dd>
                             <dd><a href="javascript:;" data-url="datalist.html" data-id="7">留言管理</a></dd>
                         </dl>

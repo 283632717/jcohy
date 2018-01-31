@@ -73,7 +73,7 @@
                     <@noticeList>
                         <#list list as x>
                             <#if x.url != null>
-                                <span style="color: red">${(x.content)!}<a href="${x.url}" target="_blank" style="color:#01AAED">点我前往</a></span>
+                                <span style="color: red">${(x.content)!}<a href="${x.url}" target="_blank" style="color:#01AAED">&nbsp;&nbsp;点我前往</a></span>
                             <#else >
                                 <span style="color: #009688">${(x.content)!}</span>
                             </#if>

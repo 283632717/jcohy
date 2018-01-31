@@ -31,7 +31,7 @@ public class NoticeServiceImpl implements NoticeService {
 
     @Override
     public List<Notice> findAllVisiable() {
-        return noticeRepository.findAllByVisible(0);
+        return noticeRepository.findAllByVisible(1);
     }
 
     @Override
@@ -47,5 +47,23 @@ public class NoticeServiceImpl implements NoticeService {
     @Override
     public Notice saveOrUpdate(Notice notice) {
         return noticeRepository.save(notice);
+    }
+
+    @Override
+    public void delete(Long id) {
+        noticeRepository.delete(id);
+    }
+
+    @Override
+    public void change(Long id, String type) {
+        Notice blog = noticeRepository.findOne(id);
+        switch (type){
+            case "visible":
+                blog.setVisible(blog.getVisible() == 0 ? 1 : 0);
+                break;
+            default:
+                break;
+        }
+        noticeRepository.save(blog);
     }
 }
