@@ -24,6 +24,7 @@ public class FreeMarkerConfig {
     private NoticeDirective noticeDirective;
     @Autowired
     private MenuDirective menuDirective;
+
     @PostConstruct
     public void setSharedVariable() {
     	try {

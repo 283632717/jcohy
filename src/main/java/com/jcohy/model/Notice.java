@@ -28,6 +28,9 @@ public class Notice extends AbstractModel {
     @Column(name = "visible")
     private Integer visible;
 
+    @Column(name = "url")
+    private String url;
+
     public String getContent() {
         return content;
     }
@@ -58,5 +61,13 @@ public class Notice extends AbstractModel {
 
     public void setVisible(Integer visible) {
         this.visible = visible;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

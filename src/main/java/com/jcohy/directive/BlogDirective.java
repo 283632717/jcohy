@@ -39,6 +39,10 @@ public class BlogDirective implements TemplateDirectiveModel {
                 list = blogService.findFeaturedN(5);
             }
 
+            if("all".equalsIgnoreCase(type)){
+                list = blogService.findAll();
+            }
+
             environment.setVariable("list", new DefaultObjectWrapperBuilder(Configuration.VERSION_2_3_25).build().wrap(list));
             if (templateDirectiveBody != null) {
                 templateDirectiveBody.render(environment.getOut());
